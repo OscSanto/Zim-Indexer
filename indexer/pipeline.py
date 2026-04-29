@@ -390,28 +390,31 @@ def run_embed(
     import queue
     from indexer.embed import encode_parallel, NUM_STREAMS
 
-    prefetch_q: queue.Queue = queue.Queue(maxsize=NUM_STREAMS * 2)
-    last_fetched_id = 0  # track last chunk ID put in queue
+    # Fetch NUM_STREAMS batches per SQL query to reduce DB round-trips
+    fetch_size = batch_size * NUM_STREAMS
+    prefetch_q: queue.Queue = queue.Queue(maxsize=NUM_STREAMS * 4)
+    last_fetched_id = 0
 
     def prefetch_worker():
-        """Fetch batches from DB in background, feed to queue."""
+        """Fetch all batches for one GPU round in a single SQL query."""
         nonlocal last_fetched_id
-        # Open separate read-only connection for thread safety
         read_con = db.open_db(db_path)
         try:
             while not stop.is_set():
                 rows = read_con.execute(
                     "SELECT id, text FROM chunks WHERE embedded = 0 AND id > ? "
                     "ORDER BY id LIMIT ?",
-                    (last_fetched_id, batch_size),
+                    (last_fetched_id, fetch_size),
                 ).fetchall()
                 if not rows:
                     break
-                prefetch_q.put(rows)
+                # Split into per-stream batches and enqueue individually
+                for i in range(0, len(rows), batch_size):
+                    prefetch_q.put(rows[i : i + batch_size])
                 last_fetched_id = rows[-1][0]
         finally:
             read_con.close()
-            prefetch_q.put(None)  # sentinel to signal done
+            prefetch_q.put(None)
 
     prefetch_thread = threading.Thread(target=prefetch_worker, daemon=True)
     prefetch_thread.start()

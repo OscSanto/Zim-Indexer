@@ -47,7 +47,7 @@ def main() -> None:
 
     BASE_CFG = {
         "embed_model":      "BAAI/bge-small-en-v1.5",
-        "embed_batch_size": 128,
+        "embed_batch_size": 512,
         "faiss_nprobe":     64,
         "faiss_save_every": 1024,
         "output_dir_mode":  "auto",
