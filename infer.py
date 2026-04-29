@@ -361,8 +361,8 @@ def ollama_generate(
         "model":  model,
         "prompt": prompt,
         "stream": False,
-        "options": {"temperature": 0, "num_predict": 10,
-                    "stop": ["\n", ")", " -"]},
+        "options": {"temperature": 0, "num_predict": 16,
+                    "stop": [")", " -", "\n\n"]},
     }
     try:
         r = requests.post(url, json=payload, timeout=timeout)
@@ -418,6 +418,7 @@ def run_system(
     label:          str,
     max_ctx_tokens: int | None = None,
     system_prompt:  str | None = None,
+    detail_log:     list | None = None,
 ) -> list[dict]:
     results         = []
     total_ctx_chars = 0
@@ -473,6 +474,31 @@ def run_system(
 
         predicted = _parse_letter(gen["response"] or "") if gen["response"] else None
         correct   = predicted == q["correct_key"] if predicted else False
+
+        if detail_log is not None:
+            detail_log.append({
+                "num":           i + 1,
+                "label":         label,
+                "question":      q["question"],
+                "options":       q["options"],
+                "correct_key":   q["correct_key"],
+                "correct_text":  q["correct_text"],
+                "hits": [
+                    {
+                        "title":           h.get("title", ""),
+                        "text":            h.get("text", ""),
+                        "lead_context":    h.get("lead_context", ""),
+                        "section_context": h.get("section_context", ""),
+                        "score":           h.get("score", 0),
+                    }
+                    for h in hits
+                ],
+                "prompt":        prompt,
+                "raw_response":  gen["response"] or "",
+                "predicted":     predicted or "",
+                "correct":       correct,
+                "total_s":       round(gen["total_s"], 3),
+            })
 
         results.append({
             "idx":           i,
@@ -650,6 +676,7 @@ def main():
                         default=[128, 512],
                         help="Context token budgets to test (0 = unlimited). Default: 128 512")
     parser.add_argument("--verbose",       action="store_true",        help="Log final LLM context to stderr")
+    parser.add_argument("--log",           action="store_true",        help="Write detailed per-question JSONL log (prompt, hits, response) alongside --out")
     parser.add_argument("--system-prompt", default=None,               help="System prompt text (default: built-in medical expert prompt)")
     args = parser.parse_args()
 
@@ -711,10 +738,20 @@ def main():
                 # Run it once (budget loop still applies for uniform table structure)
                 label = f"{short} / {cond_name} / {bud_label}"
                 print(f"\nRunning: {label}")
+                detail_log: list | None = [] if args.log else None
                 res = run_system(questions, model, args.host, args.port,
                                  idx_dir, top_k, cfg, label,
                                  max_ctx_tokens=max_ctx,
-                                 system_prompt=args.system_prompt)
+                                 system_prompt=args.system_prompt,
+                                 detail_log=detail_log)
+                if detail_log is not None:
+                    slug = re.sub(r"[^a-zA-Z0-9]+", "_", label).strip("_")
+                    log_path = out_path.with_stem(out_path.stem + f"_{slug}_detail").with_suffix(".jsonl")
+                    log_path.parent.mkdir(parents=True, exist_ok=True)
+                    with open(log_path, "w", encoding="utf-8") as lf:
+                        for entry in detail_log:
+                            lf.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                    print(f"  Detail log → {log_path}")
                 acc = accuracy(res)
                 s   = res[0] if res else {}
                 agg_systems.append({

@@ -1,173 +1,231 @@
 # Running ZIM Indexer on Google Colab
 
-The GUI does not work on Colab. This guide uses the CLI scripts only.
+No GUI — CLI only. Indexes are built on Colab's local disk and copied to Drive when done.
 
-The ZIM file stays on Google Drive throughout. The index is built on Colab's
-local disk (fast SSD, ~100 GB free) and then copied to Drive when done.
-
----
-
-## Step 1 — Open a new notebook and set the runtime
-
-Runtime → Change runtime type → **T4 GPU**
+**Recommended runtime:** A100 GPU (Colab Pro) or T4 (free tier, slower)
+**Estimated time:** ~1 hour on A100, ~4–6 hours on T4
 
 ---
 
-## Step 2 — Mount Google Drive
+## Cell 1 — Mount Google Drive
 
 ```python
 from google.colab import drive
-drive.mount('/content/drive')
+drive.mount("/content/drive")
 ```
 
-Verify your ZIM file is visible:
+---
+
+## Cell 2 — Set paths and verify ZIM
 
 ```python
 import os
-ZIM = "/content/drive/MyDrive/wikipedia.zim"   # ← change this path
-print(os.path.exists(ZIM), os.path.getsize(ZIM) // 1_000_000, "MB")
+
+ZIM_DRIVE = "/content/drive/MyDrive/rag_pipeline/wikipedia_en_medicine_maxi_2026-04.zim"
+
+print("Exists:", os.path.exists(ZIM_DRIVE))
+print("Size MB:", os.path.getsize(ZIM_DRIVE) // 1_000_000)
 ```
+
+> Change `ZIM_DRIVE` to match your actual Drive path.
 
 ---
 
-## Step 3 — Clone the repo and install dependencies
+## Cell 3 — Clone repo
 
 ```python
-!git clone https://github.com/YOUR_USERNAME/zim-indexer.git /content/zim-indexer
+%cd /content
+!rm -rf /content/zim-indexer
+!git clone https://github.com/OscSanto/zim-indexer.git /content/zim-indexer
 %cd /content/zim-indexer
 ```
 
+---
+
+## Cell 4 — Install dependencies (GPU version)
+
 ```python
-!pip install -q fastembed faiss-cpu libzim beautifulsoup4 numpy requests psutil
+!pip uninstall -y onnxruntime
+!pip install -q fastembed-gpu faiss-cpu libzim beautifulsoup4 numpy requests psutil
 ```
+
+> `fastembed-gpu` bundles the correct `onnxruntime-gpu` version. Do NOT use
+> `fastembed` (CPU-only) or manually install `onnxruntime-gpu` — version
+> conflicts will cause `AttributeError: module 'onnxruntime' has no attribute 'SessionOptions'`.
 
 ---
 
-## Step 4 — Build the indexes
-
-Indexes are written to Colab local disk (next to the ZIM path).
-Because the ZIM is on Drive, "auto" mode would write to Drive too — which is
-slow for millions of write operations. Instead, copy the ZIM locally first:
+## Cell 5 — Copy ZIM to local disk
 
 ```python
-# Copy ZIM to local disk (fast writes during indexing)
-!cp "{ZIM}" /content/wikipedia.zim
+!rsync -ah --progress "$ZIM_DRIVE" /content/wikipedia.zim
 ```
-
-Then build both structured and flat indexes:
 
 ```python
-!python build_indexes.py /content/wikipedia.zim
+import os
+print("Local exists:", os.path.exists("/content/wikipedia.zim"))
+print("Local size MB:", os.path.getsize("/content/wikipedia.zim") // 1_000_000)
 ```
 
-This runs four steps in order:
+> Always index to local disk (`/content/`), not Drive. Writing millions of rows
+> directly to Drive over FUSE is 10–20× slower.
+
+---
+
+## Cell 6 — Verify repo and GPU
+
+```python
+%cd /content/zim-indexer
+!ls
+!nvidia-smi
+```
+
+> If `nvidia-smi` errors, go to **Runtime → Change runtime type → GPU (T4 or A100)**
+> and reconnect before continuing.
+
+---
+
+## Cell 7 — Build all indexes (live output)
+
+```python
+%cd /content/zim-indexer
+
+import subprocess, sys
+
+proc = subprocess.Popen(
+    [sys.executable, "build_indexes.py", "/content/wikipedia.zim"],
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+    text=True
+)
+
+for line in proc.stdout:
+    print(line, end="", flush=True)
+
+proc.wait()
+print("Exit code:", proc.returncode)
+```
+
+This runs all 4 steps sequentially:
 1. Extract structured → `/content/wikipedia/`
-2. Embed structured (uses T4 GPU automatically)
+2. Embed structured (GPU)
 3. Extract flat → `/content/wikipedia_flat/`
-4. Embed flat
+4. Embed flat (GPU)
 
-Embedding 2.5 million chunks takes roughly **2–4 hours** on a T4.
-
-> **Tip:** To avoid losing progress if the session disconnects, stream output
-> to a log file and watch it in a second cell:
->
-> ```python
-> !python build_indexes.py /content/wikipedia.zim > /content/build.log 2>&1 &
-> !tail -f /content/build.log
-> ```
-
-The pipeline is **resumable** — if the session drops, re-run the same command
-and it picks up from where it left off (already-extracted articles and
-already-embedded chunks are skipped).
-
----
-
-## Step 5 — Copy the finished indexes to Drive
-
-```python
-!cp -r /content/wikipedia      "/content/drive/MyDrive/wikipedia"
-!cp -r /content/wikipedia_flat "/content/drive/MyDrive/wikipedia_flat"
+Progress lines show rate, ETA, GPU %, VRAM, and disk free:
+```
+Embedded 20,480/1,475,646 (805 chunks/s)  ETA 0h30m  gpu=84% mem=28637/97887MB  disk=196.2GB free
 ```
 
-Storage needed on Drive:
+---
 
-| Directory | Approximate size |
-|---|---|
-| `wikipedia/` | ~2–3 GB |
-| `wikipedia_flat/` | ~2–3 GB |
+## Cell 8 — Copy finished indexes to Drive
 
-You do **not** need to copy the ZIM back — it was never moved.
+```python
+!rsync -ah --progress /content/wikipedia      "/content/drive/MyDrive/rag_pipeline/wikipedia"
+!rsync -ah --progress /content/wikipedia_flat "/content/drive/MyDrive/rag_pipeline/wikipedia_flat"
+```
+
+> Each index is ~2–3 GB. Do this as soon as the build finishes — Colab
+> local disk is wiped when the session ends.
 
 ---
 
-## Step 6 — Run evaluation (optional)
+## Cell 9 — Run evaluation (structured only)
+
+```python
+!mkdir -p /content/drive/MyDrive/rag_pipeline/results
+
+%cd /content/zim-indexer
+
+!python evaluate.py \
+  --dataset data/medqa_test.jsonl \
+  --structured /content/wikipedia \
+  --n 500 \
+  --top-k 10 \
+  --out /content/drive/MyDrive/rag_pipeline/results/medqa_results.csv
+```
+
+---
+
+## Cell 10 — Run evaluation (structured + flat comparison)
 
 ```python
 !python evaluate.py \
   --dataset data/medqa_test.jsonl \
   --structured /content/wikipedia \
   --flat       /content/wikipedia_flat \
-  --n 500 --top-k 10 \
-  --out /content/drive/MyDrive/results/medqa_results.csv
+  --n 500 \
+  --top-k 10 \
+  --out /content/drive/MyDrive/rag_pipeline/results/medqa_results_with_flat.csv
 ```
 
-Results are written directly to Drive.
+> Use Cell 10 only after both indexes are fully built. Omitting `--flat`
+> runs 3 systems (BM25 Only, Hybrid Structured, Hybrid Struct + Lead).
+> Adding `--flat` adds Hybrid Flat for the full 4-system comparison.
 
 ---
 
-## Resuming a later session
+## Resuming after a disconnection
 
-If you come back after the session expired, the local disk is gone but the
-Drive indexes are intact. Copy them back to local disk before querying:
+Colab local disk survives a **runtime restart** but is wiped on full
+**session disconnect**. If the session is still alive, just re-run from Cell 7 —
+the pipeline resumes automatically:
 
+- Extract: scans fast (`new=0`), skips already-extracted articles
+- Embed: loads existing `faiss.index` checkpoint, skips `embedded=1` chunks
+
+After a restart, re-run **Cell 1 → Cell 4 → Cell 7** in order (skip 3 and 5
+if the disk files are still there).
+
+Check what survived:
 ```python
-!cp -r "/content/drive/MyDrive/wikipedia"      /content/wikipedia
-!cp -r "/content/drive/MyDrive/wikipedia_flat" /content/wikipedia_flat
+import os
+print(os.path.exists("/content/wikipedia.zim"))
+print(os.path.exists("/content/wikipedia/faiss.index"))
 ```
 
-Then run evaluate or infer directly against `/content/wikipedia`.
-
----
-
-## Changing the embedding model
-
-The default is `BAAI/bge-small-en-v1.5`. To use a different model, pass it
-via a config override before running `build_indexes.py`:
-
+If the ZIM is gone, re-run Cell 5. If the index is gone, copy it back from Drive:
 ```python
-import sys
-sys.argv = ["build_indexes.py", "/content/wikipedia.zim"]
-
-# Patch the config before the script reads it
-from indexer import pipeline
-# Edit BASE_CFG in build_indexes.py directly, or override here:
-```
-
-Or edit `build_indexes.py` line 49 directly:
-
-```python
-"embed_model": "BAAI/bge-small-en-v1.5",   # already the default
+!rsync -ah --progress "/content/drive/MyDrive/rag_pipeline/wikipedia" /content/wikipedia
 ```
 
 ---
 
-## Troubleshooting
+## Notes and considerations
 
-**Out of memory during embed**
-Reduce `embed_batch_size` in `build_indexes.py` `BASE_CFG`:
+**GPU not detected (`gpu: none detected`)**
+Run Cell 4 again — `fastembed-gpu` must be installed after a runtime restart.
+Also check `!nvidia-smi` to confirm a GPU is allocated.
+
+**`AttributeError: module 'onnxruntime' has no attribute 'SessionOptions'`**
+Version conflict between `onnxruntime` and `onnxruntime-gpu`. Fix:
 ```python
-"embed_batch_size": 32,   # default 128; lower if T4 OOM
+!pip uninstall -y onnxruntime onnxruntime-gpu fastembed
+!pip install fastembed-gpu
 ```
 
-**Session disconnects mid-embed**
-Re-run the same `build_indexes.py` command. It skips already-embedded chunks
-(`embedded=1` flag in SQLite) and continues from the last checkpoint.
-
-**Drive writes are slow**
-Always index to local disk (`/content/`) and copy to Drive only at the end.
-Writing millions of rows directly to Drive over FUSE is 10–20× slower.
-
-**`libzim` not found**
+**`faiss.tmp` rename error**
+Stale file from a previous crashed run. Fix:
 ```python
-!pip install libzim --pre   # use pre-release if stable build fails on Colab
+!rm -f /content/wikipedia/faiss.tmp
+!rm -f /content/wikipedia_flat/faiss.tmp
 ```
+Then re-run Cell 7.
+
+**Slow embed speed (~200 chunks/s instead of 800+)**
+SQLite prefetch bottleneck. Make sure you pulled the latest code (`git pull`)
+which fetches all 8 batches in one SQL query instead of 8 separate queries.
+
+**ZIM file name**
+The local ZIM path (`/content/wikipedia.zim`) determines the index directory name
+(`/content/wikipedia/`). Keep the local name consistent across sessions or the
+pipeline will create a new index instead of resuming the existing one.
+
+**Drive storage needed**
+| File | Size |
+|---|---|
+| ZIM file (stays on Drive, not copied) | ~2.2 GB |
+| `wikipedia/` structured index | ~2–3 GB |
+| `wikipedia_flat/` flat index | ~2–3 GB |
+| Results CSVs | < 10 MB |
