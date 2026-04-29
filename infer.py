@@ -348,7 +348,7 @@ def ollama_generate(
     model: str,
     host: str,
     port: int = 11434,
-    timeout: int = 120,
+    timeout: int = 300,
 ) -> dict:
     """
     Returns a dict with keys:
