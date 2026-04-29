@@ -1,0 +1,12 @@
+fastembed>=0.3.0
+faiss-cpu>=1.7.4
+libzim>=3.0.0
+beautifulsoup4>=4.12.0
+numpy>=1.24.0
+requests>=2.31.0
+psutil>=5.9.0
+# Evaluation datasets (download_data.py)
+datasets>=2.18.0
+huggingface_hub>=0.22.0
+# Optional: rich HTML rendering in Browse tab (falls back to plain text if absent)
+# tkinterweb>=3.20.0

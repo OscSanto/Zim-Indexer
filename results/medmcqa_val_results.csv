@@ -1,0 +1,208 @@
+num,question,correct_key,correct_text,BM25 Only_rank,Hybrid Structured_rank,Struct+Lead_rank,Struct+Section_rank,Struct+Both_rank,BM25 Only_hit@10,Hybrid Structured_hit@10,Struct+Lead_hit@10,Struct+Section_hit@10,Struct+Both_hit@10
+1,Which of the following is not true for myelinated nerve fibers:,A,Impulse through myelinated fibers is slower than non-myelinated fibers,,,,,,0,0,0,0,0
+2,Which of the following is not true about glomerular capillaries'),A,The oncotic pressure of the fluid leaving the capillaries is less than that of fluid entering it,,,,,,0,0,0,0,0
+3,A 29 yrs old woman with a pregnancy of 17 week has a 10 years old boy with down syndrome. She does not want another down,C,Amniotic fluid samples plus chromosomal analysis will definitely tell her that next baby will be down syndromic or not,,,,,,0,0,0,0,0
+4,Axonal transport is:,C,Antegrade and retrograde,,,,,,0,0,0,0,0
+5,Low insulin to glucagon ratio is seen in all of these except:,A,Glycogen synthesis,,,,,,0,0,0,0,0
+6,Concentration of tropicamide:,A,0.01,,,,,,0,0,0,0,0
+7,Which of the following statements is true regarding H I N1 Influenza?,A,Pregnant woman with sore throat can be staed immediately on oseltamivir without diagnostic testing under category B,,,,,,0,0,0,0,0
+8,Which of the following are not a branch of external carotid Aery in Kiesselbach's plexus.,B,Anterior ethmoidal aery,,,,,,0,0,0,0,0
+9,Diagnosis of the following ECG-,B,Electrical alternans,,,,,,0,0,0,0,0
+10,A blue new born presents with cyanosis. The X–ray chest reveal oligaemic lung field and normal sized heart. Most likely ,B,Pulmonary atresia,,,,,,0,0,0,0,0
+11,27.	The lateral spread of dental caries is facilitated mostly  by the,B,Dentinoenamel junction,,,,,,0,0,0,0,0
+12,A second-year PG resident tells you to perform an ABG of a patient. All of the following are true about performing an AB,A,"Before performing the ABG, syringe should be loaded with 0.3 cc of heparin",,,,,,0,0,0,0,0
+13,Respiratory rhythm generation center is located at:,B,Pre-Botzinger complex,,,,,,0,0,0,0,0
+14,Gait apraxia is seen in thromboembolic episode involving:,A,ACA,,,,,,0,0,0,0,0
+15,Heavy forces on periodontal ligament causes:,A,Hyalinization,,,,,,0,0,0,0,0
+16,"About N. gonorrhoea, all are true except",B,All stains are highly susceptible to penicillin,,,,,,0,0,0,0,0
+17,"A patient who was on ventilator and being ventilated for past few days, suddenly pulls out the endotracheal tube. What i",A,"Assess the patient, give bag and mask ventilation and look for spontaneous breathing",,,,,,0,0,0,0,0
+18,"In a	6-month-old child, thick curd like white	patch
+appears on the buccal mucosa. On rubbing it leaves an
+erythematous p",D,Candidiasis,,,,,,0,0,0,0,0
+19,Characteristic of venous blood flow of lower limb in duplex Doppler is?,A,Monophasic,,,,,,0,0,0,0,0
+20,"The source of calcium ions of a calcific bridge in a
+tooth in which calcium hydroxide pulpotomy has been
+performed is:",A,Blood vessel borne,,,,,,0,0,0,0,0
+21,"2, 3-BPG binds to sites of haemoglobin and the affinity for oxygen",B,"1, decreases",,,,,,0,0,0,0,0
+22,Highest concentration of oxygen is delivered through?,C,Bag and mask,,,,,,0,0,0,0,0
+23,Sharpest cusp is seen in,A,Upper Canine,,,,,,0,0,0,0,0
+24,A mother is Hbs Ag positive and anti Hbe Ag positive. Risk of transmission of Hep. B in child is:,A,20%,,,,,,0,0,0,0,0
+25,"In a patient with competent lips together at rest, the lip
+line is opposite the tips of the upper incisors. The lip line",D,Low,,,,,,0,0,0,0,0
+26,A patient presented to emergency with overdose some drug. There were increased salivation and increased bronchial secret,B,Atropine,,,,,,0,0,0,0,0
+27,The current bar clasp design used is:,A,Mesio-occlusal rest,,,,,,0,0,0,0,0
+28,All of the following are true regarding Class-II inlay gingival margins preparation except?,D,Margins of restoration in self-cleansable area,,,,,,0,0,0,0,0
+29,Breakdown of periodontal fibres in periodontitis is due to bacterial enzyme: (OR) Which of the following bacterial produ,A,Collagenase,,,,,,0,0,0,0,0
+30,"In a study, two groups of newborns are checked for their weights based on whether their mothers received food supplement",C,Student's T-test,,,,,,0,0,0,0,0
+31,Which vitamin is required for glycogen Phosphorylase?,A,PLP,,,,,,0,0,0,0,0
+32,"A child's behaviour is traced to have dental difficulties
+from	his	mother.	The	most	satisfactory	method	of
+handling the ",B,Modify his fear by familiarization,,,,,,0,0,0,0,0
+33,Which of the following is the only complete cailage ring in the respiratory tree?,A,Cricoid cailage,,,,,,0,0,0,0,0
+34,Steps of intubation - arrange in sequence:- a. Head extension and flexion of neck b. Introduction of laryngoscope c. Inf,A,ABCDE,,,,,,0,0,0,0,0
+35,In Erythroblastosis fetalis not involved is –,D,Anti Lewis,,,,,,0,0,0,0,0
+36,"A dentist suffered from Hepatitis B infection 3 months back. His laboratory tests are normal, but he is not allowed by t",C,Convalescent carrier,,,,,,0,0,0,0,0
+37,A pediatrician in a district hospital with specialization neonatal care unit calls an ophthalmologist for consultation f,B,A baby born at 28 weeks of gestation,,,,,,0,0,0,0,0
+38,"In a child with active liver failure, the most important prognosis factor for death is –",D,Gram (–)ve sepsis,,,,,,0,0,0,0,0
+39,"A patient went into shock immediately after normal delivery, likely cause:",C,Uterine inversion,,,,,,0,0,0,0,0
+40,"A patient presented with flat topped violaceous papules, thinning of nails and onycholysis. What is the microscopic find",C,Basal cell degeneration,,,,,,0,0,0,0,0
+41,Which of the following is not. true regarding myelopathy?,B,Brisk jaw jerk,,,,,,0,0,0,0,0
+42,Which of the following committees has recommended a 3-year bachelor degree in medical education for rural health service,A,High level expe group of universal health program for india,,,,,,0,0,0,0,0
+43,Sequential arrangement of fetal scans -,D,All,,,,,,0,0,0,0,0
+44,Which one of the following is a muscle splitting incision?,D,Lanz incision,,,,,,0,0,0,0,0
+45,Multiple canals in mandibular premolars are seen in?,A,Africas,,,,,,0,0,0,0,0
+46,Which of the following blade angle is appropriate for scaling and root planing,B,B,,,,,,0,0,0,0,0
+47,Which pa of brachial plexus do not give branches,B,Division,,,,,,0,0,0,0,0
+48,"If the Rb gene phosphorylation is defective, which of the following will happen?",A,Cell cycle will stop at GI phase,,,,,,0,0,0,0,0
+49,Cumulative index is:,C,PMA (Massler and Schlour),,,,,,0,0,0,0,0
+50,The cells which will proliferate from top to bottom of villi are:,C,Paneth cells,,,,,,0,0,0,0,0
+51,What is the usual weight of rabbit used in ophthalmological experiments?,B,1.5-2.5 kg,,,,,,0,0,0,0,0
+52,"In plasmodium vivax malaria, relapse is caused by:September 2012",C,Hypnozoite,,,,,,0,0,0,0,0
+53,Retraction of mandible is achieved by:,B,Temporalis,,,,,,0,0,0,0,0
+54,How is modified shock index represented as?,A,HR/MAP,,,,,,0,0,0,0,0
+55,"A 3 week neonate with ambiguous genitalia presented with Na+ 127 meq/L, K+ 7.2 meq/L wit BP 52/24 mm Hg and he was manag",B,Hydrocoisone administration,,,,,,0,0,0,0,0
+56,Base pairs in DNA,C,3.2 billion,,,,,,0,0,0,0,0
+57,Which of the following is a solid solution?,C,Silver-palladium,,,,,,0,0,0,0,0
+58,Tracheal secretions should be suctioned for:,A,10-15 seconds,,,,,,0,0,0,0,0
+59,"A patient presents with carcinoma of the larynx involving the left false cords, left arytenoid and the left aryepiglotti",A,Vertical hemilaryngectomy,,,,,,0,0,0,0,0
+60,Which of the following lipoproteins does not move towards charged end in electrophoresis?,D,Chylomicrons,,,,,,0,0,0,0,0
+61,"A 60 years old male presented with fever, chills and dysuria. Patient was hospitalized in emergency for 5 days. PSA leve",D,Antibiotics and admit,,,,,,0,0,0,0,0
+62,Name the structure marked with arrow,C,Secretory vesicles,,,,,,0,0,0,0,0
+63,"A patient from,nqh-eastern states was diagnosed to have infection with P. falciparum malaria. What is the most appropria",A,Aemether plus lumefantrine,,,,,,0,0,0,0,0
+64,"Iron is present in all, EXCEPT",D,Pyruvate kinase,,,,,,0,0,0,0,0
+65,The most common bone tumor that occurs in children is:,A,Osteosarcoma,,,,,,0,0,0,0,0
+66,"In a couple for treatment of infeility from the last four years, female paner is normal. Male paner has 0.8 ml semen vol",D,Transrectal ultrasound to detect duct obstruction,,,,,,0,0,0,0,0
+67,The zygomatic bone does not articulate with:,C,Nasal bone,,,,,,0,0,0,0,0
+68,Which of the following statements is true regarding medical aboion?,D,Only a person ceified under MTP act can perform medical termination of pregnancy,,,,,,0,0,0,0,0
+69,Calcium ions triggers muscle contraction by binding to:,C,Troponin,,,,,,0,0,0,0,0
+70,"SD plasma destroys lipid enveloped virus. On SD plasma transfusion, which of the following infection is the likely possi",B,HAV,,,,,,0,0,0,0,0
+71,"According to the intelligence quotient classification, a score of 90-110 is:",B,Average,,,,,,0,0,0,0,0
+72,"Due to which of the following enzyme deficiency, vitamin C cannot be synthesised in humans?",C,L-Gulonolactone oxidase,,,,,,0,0,0,0,0
+73,In a patient of heart disease antibiotic prophylaxis for dental extraction is:,A,Amoxicillin.,,,,,,0,0,0,0,0
+74,"Which of the following type of failure may occur, if the coefficient of thermal expansion of ceramic is much lower than ",B,Adhesive failure of metal ceramic bond,,,,,,0,0,0,0,0
+75,Anti monsoon curve seen in :,D,All of the above.,,,,,,0,0,0,0,0
+76,"A 10 years old child has lytic lesions in upper femur, the differential diagnosis can be all except :",A,Plasmacytoma,,,,,,0,0,0,0,0
+77,During periradicular surgery bone is removed with?,A,Round burr,,,,,,0,0,0,0,0
+78,The primary function of the dental pulp is:,B,Production of dentin,,,,,,0,0,0,0,0
+79,Which of the following increases callus formation:,B,Movement at fracture site,,,,,,0,0,0,0,0
+80,Child of Vasanthi was weaned from breast milk on the 5th day and was given sugarcane juice the child developed hypoglyce,B,Aldolase B,,,,,,0,0,0,0,0
+81,Skeletal muscles,C,Contraction is initiated by calcium binding to troponin,,,,,,0,0,0,0,0
+82,Which of the following is most effective for gluconeogenesis in starvation?,A,Acetyl Co-A stimulation of pyruvate carboxylase,,,,,,0,0,0,0,0
+83,Which is not involved in iron metabolism?,A,Transthyretin,,,,,,0,0,0,0,0
+84,A 14 year girl presented with absent thelarche.On examination uterus was present. Investigations showed high FSH. karyot,A,Gonadal dysgenesis,,,,,,0,0,0,0,0
+85,Reciprocal arm taper in,A,1 dimension,,,,,,0,0,0,0,0
+86,Bluegrass appliance is used to treat:,C,Both,,,,,,0,0,0,0,0
+87,On a primary 2nd molar caries occur most commonly on,A,Occlusal pit and fissures,,,,,,0,0,0,0,0
+88,Waldeyer's lymphatic chain is formed by all except,D,Post auricular nodes,,,,,,0,0,0,0,0
+89,"Polydactyly, craniosynostosis, Late closure of fontanelles is a feature of:",A,Apert's syndrome,,,,,,0,0,0,0,0
+90,Physiological changes seen in laparoscopy include all except:,D,Increased pH,,,,,,0,0,0,0,0
+91,Which of the following nerve fibre types is least susceptible to LA blockade?,B,A alpha,,,,,,0,0,0,0,0
+92,"A child born with multiple congenital defect including cleft palate, neural tube defect, atrial septal defect and microc",B,Isotretinoin,,,,,,0,0,0,0,0
+93,Incorporation of peripheral seal in an impression is necessary to obtain;,B,Functionally moulded periphery,,,,,,0,0,0,0,0
+94,Increase in height of mandible with increase in interdental spaces in elderly man,A,Hyperpituitarism,,,,,,0,0,0,0,0
+95,A patient has seasonal allergic rhinitis and is on terfenadine. He develops cardiac arrhythmias after a course of antibi,C,Erythromycin,,,,,,0,0,0,0,0
+96,Modulus of elasticity means:,A,Rigidity or stiffness of the material,,,,,,0,0,0,0,0
+97,Vwf factor is produced by:,B,Endothelial cells,,,,,,0,0,0,0,0
+98,Which of the following statement is false statement about snake-bites?,D,Neostigmine has a role in krait bite.,,,,,,0,0,0,0,0
+99,A prosthetic appliance given to cover the palatal defect in patients with cleft palate is called,B,Obturator,,,,,,0,0,0,0,0
+100,Biofilm forming bacteria causes antimicrobial resist-ance by all of the following except:,D,Adherence,,,,,,0,0,0,0,0
+101,Which of these drugs is an antidote for fibrinolytic therapy?,A,Epsilon aminocaproic acid,,,,,,0,0,0,0,0
+102,Which facial bone is most prone to fracture?,B,Nasal,,,,,,0,0,0,0,0
+103,"To check objective pain response, which is best used method",A,Facial pain scale,,,,,,0,0,0,0,0
+104,"A one year old child, who is earlier normal, is suffering from copious nasal discharge, coarse facial features, large to",D,Hurler syndrome,,,,,,0,0,0,0,0
+105,The resolution of IOPA is about:,B,16 Lp/mm,,,,,,0,0,0,0,0
+106,A patient diagnosed with carcinoma of lung presented with a serum calcium level of 16.4 mmol/L. What will be the first s,A,IV fluids and furosemide,,,,,,0,0,0,0,0
+107,The following test may be abnormal in disseminated intravascular coagulation except:,D,Clot solubility.,,,,,,0,0,0,0,0
+108,In Xerostomia the salivary pH is:,B,Low,,,,,,0,0,0,0,0
+109,Which of the following is not true about stamp cusp?,C,Sharp cusps and prominent ridges are present,,,,,,0,0,0,0,0
+110,Sugar restricted to diet was beneficial in presence of unfavorable hygiene was from which study?,A,Hopewood,,,,,,0,0,0,0,0
+111,"Alginate at 20 degrees, the gel is formed in",A,3-4 mins.,,,,,,0,0,0,0,0
+112,Most common tumor of lacrimal gland:,D,Hamate fracture,,,,,,0,0,0,0,0
+113,Percentage of carbon in carbon steel hand instruments is,A,1-1.2%,,,,,,0,0,0,0,0
+114,"Topical administration of I% Pilocarpine failed to produce pupillary constriction in a patient who had a large, dilated ",C,Pharmacological blockade,,,,,,0,0,0,0,0
+115,Pregnancy gingivitis is caused by:,A,Bacteriodes melaninogenicus,,,,,,0,0,0,0,0
+116,Artery palpable at the anterior border of the masseter is :,B,Facial artery,,,,,,0,0,0,0,0
+117,In DIC following are seen except,C,Normal APTT,,,,,,0,0,0,0,0
+118,Absorption of which of the following drugs is increased after a fatty meal?,B,Griseofulvin,,,,,,0,0,0,0,0
+119,What is the basis of behavior shaping:,A,Stimulus response theory,,,,,,0,0,0,0,0
+120,Shortest root of maxillary 1st molar,A,Distobuccal,,,,,,0,0,0,0,0
+121,Malaria relapse common with which type plasmodium species?,C,Plasmodium vivax and ovale,,,,,,0,0,0,0,0
+122,"Which of the following constituents is common in occlusal sealants, bonding agents, composite resins?",A,BIS GMA,,,,,,0,0,0,0,0
+123,Which primary tooth resemble premolar,A,Upper 1st molar,,,,,,0,0,0,0,0
+124,"According to Transplantation of Human Organs Act, which of the following doctors is/are not authorized to declare brains",D,Surgeon doing liver transplant,,,,,,0,0,0,0,0
+125,Which of the following types of lipase is controlled by glucagon?,B,Hormone-sensitive lipase,,,,,,0,0,0,0,0
+126,In dentistry which sedatives are generally used:,A,Benzodiazepines,,,,,,0,0,0,0,0
+127,In case of Fracture of mandible; alveolar border experiences which force,A,Tension,,,,,,0,0,0,0,0
+128,The hormone having the maximum effect on granulation wound healing is:,B,Cortisone,,,,,,0,0,0,0,0
+129,The clot formed is not stable unless extensive cross-linking occurs. This extensive cross-linking of blood clot is done ,D,Factor XIII,,,,,,0,0,0,0,0
+130,Pre-carve burnishing is useful for all except:,B,Increase surface hardness,,,,,,0,0,0,0,0
+131,"A neonate is being investigated for jaundice. A liver biopsy shows features of a ""Giant Cell/Neonatal hepatitis"". Which ",C,Alpha–1–antitrypsin deficiency,,,,,,0,0,0,0,0
+132,Ammonia from brain is removed as:,D,Glutamine,,,,,,0,0,0,0,0
+133,Use of lithium during pregnancy increases the risk of development of which of the following malformations in the baby?,B,Cardiac defects,,,,,,0,0,0,0,0
+134,Most common presentation of abdominal desmoids tumor is?,B,Abdominal mass,,,,,,0,0,0,0,0
+135,Noise induced hearing toss inosto affects:,B,Outer hair cell,,,,,,0,0,0,0,0
+136,Replacing amino acid will not change its functions,A,Glutamine to Asparagine,,,,,,0,0,0,0,0
+137,"A 75 year old chronic smoker who is diabetic and edentulous for the last 30 years has a bilateral body fracture, best tr",B,Gunning splints,,,,,,0,0,0,0,0
+138,"Which of the following is used as, surface hardener in Impression material?",A,2% potassium sulfate,,,,,,0,0,0,0,0
+139,A 59-year-old female presents with gingival condition punched out crater-like depression covered with membrane which can,C,ANUG,,,,,,0,0,0,0,0
+140,Visual cortex is present in the:,A,Occipital lobe,,,,,,0,0,0,0,0
+141,Bartholins duct is the name of :,C,Sublingual duct,,,,,,0,0,0,0,0
+142,Which of the following exists as yeast at 37deg and hyphae at 25deg?,A,Histoplasma capsulatum,,,,,,0,0,0,0,0
+143,Pulsatile varicose veins in lower limbs is seen in –,A,Klippel trenaunay syndrome,,,,,,0,0,0,0,0
+144,"The number of dental caries cases reported during last 10 years are given below 250, 320, 190, 300, 5000, 100, 260, 350,",C,Median,,,,,,0,0,0,0,0
+145,The most common bone cancer is:,B,Metastatic bone cancer,,,,,,0,0,0,0,0
+146,Which is the ligand for receptors present in liver for uptake of LDL?,A,Apo B-100,,,,,,0,0,0,0,0
+147,Amyloid protein in Hemodialysis associated with amyloidosis is-,C,b- 2 microglobulin,,,,,,0,0,0,0,0
+148,Teeth that erupt in 30 days of birth,A,Neonatal teeth,,,,,,0,0,0,0,0
+149,Arrange the following in the sequence of closure :,D,All,,,,,,0,0,0,0,0
+150,Drug adveisement letter is a necessary component of each drug formulation and contains various information about the dru,B,Date of expiry of the drug,,,,,,0,0,0,0,0
+151,"In a patient with fresh blow out fracture of the orbit, best immediate management is",A,Wait & watch,,,,,,0,0,0,0,0
+152,Which of the following drugs can be stopped abruptly without any withdrawal symptoms?,B,Fluoxetine,,,,,,0,0,0,0,0
+153,Keyhole-shaped visual field defect is seen in lesion involving which of the following regions?,C,Lateral geniculate body,,,,,,0,0,0,0,0
+154,The soft tissue tooth interface that forms after flap surgery in a previously denuded area is,A,Long junctional epithelium,,,,,,0,0,0,0,0
+155,The test done for a statistically significant change in cholesterol values in a group of patients following an intervent,B,"Paired ""t"" test",,,,,,0,0,0,0,0
+156,Mw vaccine is prepared from:,B,Mycobacterium indicus pranii,,,,,,0,0,0,0,0
+157,Guiding planes are:,A,Located adjacent to the edentulous area,,,,,,0,0,0,0,0
+158,Reflex which never disappear:,D,All of the above,,,,,,0,0,0,0,0
+159,Vitamin D toxicity is treated with,C,Dexamethasone,,,,,,0,0,0,0,0
+160,Which of the following is not the component of qSOFA?,D,Unequally dilated pupils,,,,,,0,0,0,0,0
+161,How much hone can be stretched at a time before it fractures:,B,2%,,,,,,0,0,0,0,0
+162,Tonsils developed from:,B,Ventral part of 2nd pouch.,,,,,,0,0,0,0,0
+163,Gutta Percha can effectively be sterilized by?,B,Chemical solutions,,,,,,0,0,0,0,0
+164,Which of these conditions  does not require SABE prophylaxis,D,CABG,,,,,,0,0,0,0,0
+165,Motor supply of infrahyoid muscle is:,A,Branches of cervical plexus,,,,,,0,0,0,0,0
+166,This direction of force can cause:,C,Both,,,,,,0,0,0,0,0
+167,Cystinuria is characterised by –,D,Recurrent urinary caliculi,,,,,,0,0,0,0,0
+168,"Patient with PPF transfusion complaint of breathing difficulty, tachycardic, tachypnia, Had Batwing sign present in X-ra",B,Due to overload of PPF,,,,,,0,0,0,0,0
+169,Which of these is not a theory of TMJ ankylosis?,B,Synovial fluid attracting calcium ions,,,,,,0,0,0,0,0
+170,Fingerprinting (FINDER) involves recording prints of 8 fingers. Which finger pair is excluded?,C,Little finger,,,,,,0,0,0,0,0
+171,Impression compound is characterized by all the following except:,B,Is a thermoset material,,,,,,0,0,0,0,0
+172,"In Galactorrhoea--amenorrhea syndromes, which is the investigation you should advise (apa from serum prolactin)?",A,TSH,,,,,,0,0,0,0,0
+173,What is common in class I cavity preparation for amalgam and gold inlay?,B,Mesiodistally divergent walls,,,,,,0,0,0,0,0
+174,Periodontal surgery is best performed,A,4 weeks after completion of the hygienic phase,,,,,,0,0,0,0,0
+175,Endocrine glands that are not influenced by the pituitary gland include the:,B,"Adrenal medulla, parathyroids, and the islets of langerhans",,,,,,0,0,0,0,0
+176,Rooting reflex also known as search reflex disappears:,C,4 month,,,,,,0,0,0,0,0
+177,Migratory motor complexes in the gut reappear after intervals of:,B,90 minutes,,,,,,0,0,0,0,0
+178,IV ultrashort acting barbiturate:,C,Thiopentone,,,,,,0,0,0,0,0
+179,The component that sensitizes bacteria and virus to UV irradiation,D,Nucleic acids,,,,,,0,0,0,0,0
+180,"All these are Included In active tissue engineering, except",D,Acellular dermal matrix,,,,,,0,0,0,0,0
+181,For which of the following is PPV-23 is most beneficial:,B,Sickle cell anemia patient,,,,,,0,0,0,0,0
+182,Characteristic histopathological feature of basal cell car cinoma is,A,Nuclear palisading,,,,,,0,0,0,0,0
+183,Most common mediastinal tumor:,A,Neurogenic tumor,,,,,,0,0,0,0,0
+184,All are the branches of ECA that supply nasal septum except:,A,Anterior ethmoidal aery,,,,,,0,0,0,0,0
+185,All of these are continuous variables except:,C,Blood groups A. B. ABO,,,,,,0,0,0,0,0
+186,Which of the following type of tongue thrusting has the worst prognosis?,C,Retained infantile swallow,,,,,,0,0,0,0,0
+187,CYP50 inhibition is least by:,B,Rabeprazole,,,,,,0,0,0,0,0
+188,Which of the following is a component of Pentalogy of Fallot –,A,Atrial septal Defect (ASD),,,,,,0,0,0,0,0
+189,The contractile element in a skeletal muscle is present in:,C,Myofibril,,,,,,0,0,0,0,0
+190,Cherry red spot and Hollenhorst plaque are seen in:,A,CRAO,,,,,,0,0,0,0,0
+191,Optimal location for intra osseous anesthesia for mandibular second molars is,B,Mesial to the molar,,,,,,0,0,0,0,0
+192,Which statements is true regarding VENTOUSE :,A,Minor scalp abrasions and subgaleal hematomas in new born are more frequent than forceps,,,,,,0,0,0,0,0
+193,"After cleaning and pumicing the tooth surface, plaque formation takes place within",B,1/2 to 1 hour,,,,,,0,0,0,0,0
+194,Which of the following structure is not present on floor of third ventricle?,B,Third nerve,,,,,,0,0,0,0,0
+195,Speech problems in cleft palate patients are due to,B,Inability of soft palate to stop air to go into nasopharynx,,,,,,0,0,0,0,0
+196,"According to the WHO definition of hearing loss, what is the value to classify as profound hearing loss?",B,>81 dB,,,,,,0,0,0,0,0
+197,"What we will define it ""ratio of no. of death under 1 year of age to total live birth per 1000 live births per year""?",A,Infant mortality rate,,,,,,0,0,0,0,0
+198,"The necrotising pressure areas, undergoing bone resorption and endosteal bone formation",B,Occlusal trauma,,,,,,0,0,0,0,0
+199,CLED is better medium than MacConkey medium for processing of urine samples,D,"Allows staphylococcus,Streptococcus and candida to grow",,,,,,0,0,0,0,0
+200,Pre-maturity in edge to edge position is relieved by reducing:,A,Mandibular incisal edge.,,,,,,0,0,0,0,0

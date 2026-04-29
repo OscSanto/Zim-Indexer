@@ -1,0 +1,39 @@
+# Python bytecode — compiled automatically by the interpreter, machine-specific
+__pycache__/
+*.py[cod]
+
+# ZIM files — source content files, 4–6 GB each, way too large for git
+*.zim
+
+# Generated index files — built by the pipeline, not source code
+# data.db can be 1 GB+; faiss.index up to 2 GB; both are regenerable
+data.db
+faiss.index
+faiss_ids.npy
+*.npy
+
+# Any index directories auto-created next to a ZIM file
+# Pattern: <zimname>/ and <zimname>_flat/ next to the .zim
+*_flat/
+
+# Overnight build and run logs
+*.log
+nohup.out
+
+# User-specific GUI config (stored outside repo at ~/.config/zim-indexer/)
+# Listed here in case someone copies it in by accident
+config.json
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python packaging artifacts
+dist/
+build/
+*.egg-info/
+
+# OS noise
+.DS_Store
+Thumbs.db

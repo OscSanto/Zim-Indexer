@@ -1,0 +1,203 @@
+num,question,correct_key,correct_text,BM25 Only_rank,Hybrid Structured_rank,Struct+Lead_rank,Struct+Section_rank,Struct+Both_rank,BM25 Only_hit@10,Hybrid Structured_hit@10,Struct+Lead_hit@10,Struct+Section_hit@10,Struct+Both_hit@10
+1,A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending,TELL THE ATTENDING THAT HE CANNOT FAIL TO DISCLOSE THIS MISTAKE,,,,,,,0,0,0,0,0
+2,A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of r,CROSS-LINKING OF DNA,,,,,,,0,0,0,0,0
+3,"Two weeks after undergoing an emergency cardiac catherization with stenting for unstable angina pectoris, a 61-year-old ",CHOLESTEROL EMBOLIZATION,,,,,,,0,0,0,0,0
+4,"A 39-year-old woman is brought to the emergency department because of fevers, chills, and left lower quadrant pain. Her ","LACTOSE-FERMENTING, GRAM-NEGATIVE RODS FORMING PINK COLONIES ON MACCONKEY AGAR",,,,,,,0,0,0,0,0
+5,"A 35-year-old man comes to the physician because of itchy, watery eyes for the past week. He has also been sneezing mult",KETOTIFEN EYE DROPS,,,,,,,0,0,0,0,0
+6,A 39-year-old man presents to the emergency department because of progressively worsening chest pain and nausea that sta,REASSURANCE AND CONTINUOUS MONITORING,,,,,,,0,0,0,0,0
+7,A 68-year-old male comes to the physician for evaluation of right flank pain. He has a history of diabetes and periphera,COMMON ILIAC ARTERY ANEURYSM,,,,,,,0,0,0,0,0
+8,A 65-year-old man is brought to the emergency department 30 minutes after the onset of acute chest pain. He has hyperten,CLOPIDOGREL,,,,,,,0,0,0,0,0
+9,A 37-year-old-woman presents to her primary care physician requesting a new form of birth control. She has been utilizin,ACTIVE OR RECURRENT PELVIC INFLAMMATORY DISEASE (PID),,,,,,,0,0,0,0,0
+10,A 23-year-old woman comes to the physician because she is embarrassed about the appearance of her nails. She has no hist,SILVERY PLAQUES ON EXTENSOR SURFACES,,,,,,,0,0,0,0,0
+11,A 24-year-old G2P1 woman at 39 weeks’ gestation presents to the emergency department complaining of painful contractions,IT IS AN HIV-1/HIV2 ANTIBODY DIFFERENTIATION IMMUNOASSAY,,,,,,,0,0,0,0,0
+12,A 72-year-old man comes to the physician because of a 2-month history of fatigue and worsening abdominal pain. During th,RUXOLITINIB,,,,,,,0,0,0,0,0
+13,A 20-year-old man comes to the physician because of worsening gait unsteadiness and bilateral hearing loss for 1 month. ,MENINGIOMA,,,,,,,0,0,0,0,0
+14,A 47-year-old executive schedules an appointment his physician for a routine medical check-up. He currently has no compl,A REDUCTION IN DIASTOLIC FILLING TIME,,,,,,,0,0,0,0,0
+15,A microbiologist is studying the emergence of a virulent strain of the virus. After a detailed study of the virus and it,ROTAVIRUS,,,,,,,0,0,0,0,0
+16,A 59-year-old overweight woman presents to the urgent care clinic with the complaint of severe abdominal pain for the pa,GALLBLADDER CANCER,,,,,,,0,0,0,0,0
+17,A 7-year-old boy is brought to his pediatrician’s office for a follow-up visit. He was diagnosed with asthma when he was,IL-4,,,,,,,0,0,0,0,0
+18,A 3-month-old boy is brought the emergency department by his parents after an episode of cyanosis and muscle hypotonia t,MATCHING,,,,,,,0,0,0,0,0
+19,A 29-year-old man presents to the emergency department due to central chest pain over the past 3 days which is constant ,IBUPROFEN + COLCHICINE +/- OMEPRAZOLE,,,,,,,0,0,0,0,0
+20,A 46-year-old man is brought to the emergency department for evaluation of altered mental status. He was found on the fl,"BENZODIAZEPINE INTOXICATION
+""",,,,,,,0,0,0,0,0
+21,"A 77-year-old woman presents to the emergency room with the complaints of fever, malaise, and night sweats. She recently",PREVIOUS RADIATION THERAPY,,,,,,,0,0,0,0,0
+22,A 3-month-old infant is brought to her pediatrician because she coughs and seems to have difficulty breathing while feed,22Q11 DELETION,,,,,,,0,0,0,0,0
+23,A 30-year-old African American woman comes to the physician for the evaluation of a dry cough and chest discomfort for t,HISTOPLASMA CAPSULATUM INFECTION,,,,,,,0,0,0,0,0
+24,"A 62-year-old patient has been hospitalized for a week due to a stroke. One week into the hospitalization, he develops a",STAPHYLOCOCCUS AUREUS,,,,,,,0,0,0,0,0
+25,A 6-year-old boy is brought to the emergency department by his mother for worsening wheezing and shortness of breath ove,INTUBATE WITH MECHANICAL VENTILATION,,,,,,,0,0,0,0,0
+26,"A 5-year-old female suffers from recurrent infections by Aspergillus species, Pseudomonas species, and Staphylococcus au",RESPIRATORY BURST,,,,,,,0,0,0,0,0
+27,A 3-year-old boy presents to the emergency department with a ‘cough-like-a-seal bark’ and a high-pitched inspiratory noi,STEEPLE SIGN,,,,,,,0,0,0,0,0
+28,A 26-year-old woman presents to a gynecologist after a missed period. After performing a complete physical examination a,INDUCTION OF CYP3A4 BY RIFAMPIN LEADING TO DECREASED SERUM LEVELS OF ETHINYLESTRADIOL AND PROGESTERONE,,,,,,,0,0,0,0,0
+29,A 4-year-old previously healthy boy presents with 4 days of intermittent vomiting and 5-6 daily loose stools. His mother,INCREASED CEREBROSPINAL FLUID PROTEIN WITH NORMAL CELL COUNT,,,,,,,0,0,0,0,0
+30,A 3-week-old male newborn is brought to the physician because of an inward turning of his left forefoot. He was born at ,REASSURANCE,,,,,,,0,0,0,0,0
+31,A 42-year-old woman comes to the emergency department because of a 2-day history of right upper abdominal pain and nause,OBSTRUCTION OF THE CYSTIC DUCT,,,,,,,0,0,0,0,0
+32,A 72-year-old woman is admitted to the intensive care unit for shortness of breath and palpitations. A cardiac catheteri,INCREASED VENTRICULAR WALL STIFFNESS,,,,,,,0,0,0,0,0
+33,"A 22-year-old woman is brought to the emergency department because of a 2-day history of fever, intermittent rigors, and",CHLORAMPHENICOL,,,,,,,0,0,0,0,0
+34,An otherwise healthy 50-year-old man comes to the physician because of a 6-month history of increasingly frequent episod,PROLIFERATION OF GASTRIC MUCUS-PRODUCING CELLS,,,,,,,0,0,0,0,0
+35,A 27-year-old man presents to the emergency department. He was brought in by staff from the homeless shelter when they f,"INSULIN, POTASSIUM, IV FLUIDS, AND GLUCOSE",,,,,,,0,0,0,0,0
+36,A 67-year-old man who was diagnosed with arthritis 16 years ago presents with right knee swelling and pain. His left kne,PSORIATIC ARTHRITIS,,,,,,,0,0,0,0,0
+37,A 65-year-old woman schedules an appointment with her physician for evaluation of weight loss and weakness. The weakness,PARANEOPLASTIC SYNDROME FROM SMALL CELL CARCINOMA OF THE LUNG,,,,,,,0,0,0,0,0
+38,"A 3-month-old boy presents to his pediatrician with persistent diarrhea, oral candidiasis, and signs and symptoms sugges",DEFECTIVE T CELL FUNCTION,,,,,,,0,0,0,0,0
+39,A 53-year-old man with recurrent pancreatic adenocarcinoma is enrolled in a clinical trial for a novel chemotherapeutic ,2.67,,,,,,,0,0,0,0,0
+40,A 67-year-old male is seen by neurology after he was noticed to be speaking strangely by his family. After acute treatme,ARCUATE FASCICULUS,,,,,,,0,0,0,0,0
+41,A 27-year-old woman presents to the office with concerns about her long struggle with her physical appearance since adol,POLYCYSTIC OVARIAN SYNDROME (PCOS),,,,,,,0,0,0,0,0
+42,А 43-уеаr-old mаn рrеѕеntѕ wіth tіnglіng аnd numbnеѕѕ of the lowеr lіmbѕ for 2 wееkѕ. Не also сomрlаіnѕ of реrѕіѕtеnt ра,STRICT BLOOD GLUCOSE CONTROL,,,,,,,0,0,0,0,0
+43,A one-day-old male is evaluated in the hospital nursery for bilious vomiting. The patient has urinated multiple times si,DUODENAL ATRESIA,,,,,,,0,0,0,0,0
+44,A healthy 23-year-old male is undergoing an exercise stress test as part of his physiology class. If blood were to be sa,CORONARY SINUS,,,,,,,0,0,0,0,0
+45,A 45-year-old G5P4105 presents to her gynecologist’s office with six months of increasingly heavy periods. She now soaks,GLOBULAR 10-WEEK SIZED UTERUS,,,,,,,0,0,0,0,0
+46,A man is brought into the emergency department by the police department. The officer state that the man has been arreste,FOMEPIZOLE,,,,,,,0,0,0,0,0
+47,A medical research study is evaluating an investigational novel drug (medication 1) compared with standard therapy (medi,20,,,,,,,0,0,0,0,0
+48,A 55-year-old man comes to the physician because of a 6-week history of tingling pain in the sole of his right foot when,FEMOROPOPLITEAL ARTERY STENOSIS,,,,,,,0,0,0,0,0
+49,A 29-year-old primigravid woman at 35 weeks' gestation is admitted to the hospital in labor. She has no history of serio,RECOMMEND AUTOPSY OF THE INFANT,,,,,,,0,0,0,0,0
+50,A 67-year-old man is hospitalized after several days of fever and increasing shortness of breath. Respiratory viral pane,PROLIFERATION OF SURFACTANT-SECRETING CELLS,,,,,,,0,0,0,0,0
+51,A 65-year-old male is treated for anal carcinoma with therapy including external beam radiation. How does radiation affe,INDUCES BREAKS IN DOUBLE-STRANDED DNA,,,,,,,0,0,0,0,0
+52,A 56-year-old man with a history of hypertension presents to his physician with progressive fatigue and new onset muscle,ALDOSTERONE EXCESS,,,,,,,0,0,0,0,0
+53,A 65-year-old man comes to the physician because of a 1-week history of yellowish discoloration of his skin and generali,DEFECTIVE HEPATIC BILE EXCRETION,,,,,,,0,0,0,0,0
+54,A 72-year-old woman is brought to the physician by her daughter because of a 6-month history of worsening short-term mem,ATROPINE,,,,,,,0,0,0,0,0
+55,A 61-year-old man with schizophrenia in a locked inpatient psychiatry unit was observed making an unusual smacking motio,TARDIVE DYSKINESIA,,,,,,,0,0,0,0,0
+56,"A 17-year-old football player with no significant past medical history, social history, or family history presents to hi",KOH EXAMINATION OF LESION SCRAPINGS,,,,,,,0,0,0,0,0
+57,An otherwise healthy 26-year-old man comes to the physician for medication counseling after recently being diagnosed wit,GYNECOMASTIA,,,,,,,0,0,0,0,0
+58,"A 15-year-old woman presents with fever, altered mental status and a petechial rash on her lower extremities and back si",VARIABLE Β-SEQUENCE OF THE T CELL RECEPTOR,,,,,,,0,0,0,0,0
+59,"A 2-year-old boy is brought to the physician for evaluation of pallor and increasing lethargy for 2 days. One week ago, ",HEMOLYTIC UREMIC SYNDROME,,,,,,,0,0,0,0,0
+60,A 17-year-old girl is referred by her dentist for a suspected eating disorder. She has been visiting the same dentist si,PATIENTS WITH THIS DISORDER ARE NOT FURTHER SUB-TYPED,,,,,,,0,0,0,0,0
+61,"A 14-year-old girl is brought to the physician by her father because of fever, chills, abdominal pain, and profuse non-b",SALMONELLA TYPHI,,,,,,,0,0,0,0,0
+62,A 22-year-old female college student is treated with metronidazole after presenting to student health services with itch,ACETALDEHYDE,,,,,,,0,0,0,0,0
+63,A 23-year-old primigravida presents for a regular prenatal care visit at 16 weeks gestation. She complains of increased ,NO TESTS REQUIRED,,,,,,,0,0,0,0,0
+64,An 80-year-old man is transferred from a step-down unit to a med-surg floor in the hospital. He had undergone a successf,INSERT A ‘STRAIGHT CATH’ INTO THE PATIENT’S BLADDER,,,,,,,0,0,0,0,0
+65,A healthy 19-year-old man presents to his primary care provider complaining of painless “blisters” in his mouth. He repo,DISRUPTION OF CELL MEMBRANE PERMEABILITY,,,,,,,0,0,0,0,0
+66,A 56-year-old man presents to the clinic complaining of subacute back pain for the past month. The pain is described as ,LYTIC LESIONS OF THE LUMBAR SPINE,,,,,,,0,0,0,0,0
+67,A 4-year-old boy is brought to the emergency department because of severe abdominal pain and bilious vomiting for 6 hour,PERFORM EMERGENCY LAPAROTOMY,,,,,,,0,0,0,0,0
+68,A 3-week-old male newborn is brought to the hospital because of poor weight gain since birth. He was born at 38 weeks' g,TRANSPLACENTAL PASSAGE OF TSH RECEPTOR ANTIBODIES,,,,,,,0,0,0,0,0
+69,A 57-year-old female with a past medical history of alcoholism presents to the emergency room vomiting bright red blood.,NADALOL,,,,,,,0,0,0,0,0
+70,"A 65-year-old man with a history of hypertension, obesity, and alcoholic cirrhosis is seen in clinic for follow-up. He f",PROCEED WITH LIVER BIOPSY,,,,,,,0,0,0,0,0
+71,A 66-year-old man is brought to the emergency room by his wife due to abdominal distension and persistent somnolence for,SPONTANEOUS BACTERIAL PERITONITIS,,,,,,,0,0,0,0,0
+72,A 27-year-old man presents to the emergency department after a motor vehicle collision. The patient was the front seat u,CARDIAC CONTUSION,,,,,,,0,0,0,0,0
+73,"A 56-year-old man presents to the emergency department for progressively worsening fatigue, malaise, fever, and abdomina",LIVER TRANSPLANTATION,,,,,,,0,0,0,0,0
+74,A 29-year-old woman presents to the clinic after several months of weight loss. She noticed a 6.8 kg (15 lb) unintention,METHIMAZOLE,,,,,,,0,0,0,0,0
+75,A 21-year-old man comes to the physician because of pruritus and a hypopigmented rash on his upper body for 5 days. He f,POTASSIUM HYDROXIDE PREPARATION,,,,,,,0,0,0,0,0
+76,A 5-year-old female is brought to a speech therapist for continuing work on improving her communication skills. She is o,5,,,,,,,0,0,0,0,0
+77,A 62-year old female comes to the physician because of vaginal spotting and urinary urgency for the past 4 days. She has,BIOPSY OF THE MASS,,,,,,,0,0,0,0,0
+78,"A 59-year-old man is evaluated for progressive joint pain. There is swelling and tenderness over the first, second, and ",DEPOSITION OF CALCIUM PYROPHOSPHATE (CPP) CRYSTALS,,,,,,,0,0,0,0,0
+79,A newborn is found to be extremely cyanotic immediately after birth. He then develops progressive respiratory failure an,TRANSPOSITION OF GREAT VESSELS,,,,,,,0,0,0,0,0
+80,A 25-year-old male involved in a knife fight presents with a penetrating wound to the chest. The patient is unconscious ,INTERRUPTED 2-0 POLYPROPYLENE SUTURE WITH SUPPORTING PLEDGETS,,,,,,,0,0,0,0,0
+81,"A post-mortem lung examination of a 68-year-old male overweight male with evidence of chronic lower extremity edema, a 6",REID INDEX > 50%,,,,,,,0,0,0,0,0
+82,A 54-year-old male makes an appointment with his primary care physician due to chronic fatigue that has left him unable ,CASPASE-9,,,,,,,0,0,0,0,0
+83,A 44-year-old African-American woman comes to the physician for a routine examination. She is concerned about cancer bec,ACRAL LENTIGINOUS,,,,,,,0,0,0,0,0
+84,A 60-year-old woman is brought to the clinic by her daughter for evaluation. The daughter reports that her mother has re,JAW CLAUDICATION,,,,,,,0,0,0,0,0
+85,A 30-year-old woman comes to the physician because she has been unable to conceive for 3 years. Analysis of her husband',ENDOMETRIAL TISSUE OUTSIDE THE UTERINE CAVITY,,,,,,,0,0,0,0,0
+86,A 55-year-old truck driver is brought to a physician by his wife. She states that her husband developed a fever and bega,FRIABLE IRREGULAR MASSES ATTACHED TO THE VALVE,,,,,,,0,0,0,0,0
+87,A previously healthy 30-year-old woman comes to the physician for the evaluation of pain during sexual intercourse for 6,LAPAROSCOPY,,,,,,,0,0,0,0,0
+88,A 50-year-old man visits his physician after 20 years of not seeking any medical care. He is concerned about his health ,HIGH LDL-CHOLESTEROL,,,,,,,0,0,0,0,0
+89,A 26-year-old woman is brought to the emergency department 20 minutes after being involved in a high-speed motor vehicle,THORACIC AORTIC RUPTURE,,,,,,,0,0,0,0,0
+90,A 26-year-old G1P0 woman presents to her primary care physician’s office with feelings of anxiety and trouble with sleep,PROPYLTHIOURACIL,,,,,,,0,0,0,0,0
+91,A 32-year-old woman comes to the physician because of a 3-week history of intermittent loose stools and a 1.2-kg (2.6-lb,FRESHWATER SNAILS,,,,,,,0,0,0,0,0
+92,A 3-month-old girl is brought to a pediatrician by her parents. She has central cyanosis without signs of respiratory di,NORMAL HEMOGLOBIN IN PATIENTS WITH TETRALOGY OF FALLOT DOES NOT RULE OUT IRON DEFICIENCY ANEMIA.,,,,,,,0,0,0,0,0
+93,"Six days after undergoing surgical repair of a hip fracture, a previously healthy 79-year-old woman is agitated and conf",DELIRIUM,,,,,,,0,0,0,0,0
+94,"A 54-year-old woman with a past medical history of mental retardation, hypertension, and diabetes presents to the emerge",RHEUMATOID ARTHRITIS,,,,,,,0,0,0,0,0
+95,A 24-year-old man is brought to the emergency department 15 minutes after he sustained a stab wound to the left chest ju,A DROP IN SYSTOLIC BLOOD PRESSURE OF 14 MMHG DURING INSPIRATION,,,,,,,0,0,0,0,0
+96,A 40-year-old man presents to his primary-care doctor for a follow-up of his hypertension. He is asymptomatic at his off,MR ANGIOGRAPHY OF THE BRAIN,,,,,,,0,0,0,0,0
+97,A 17-year-old female is brought to the emergency room by her father because she has been experiencing shortness of breat,AUTOSOMAL DOMINANT,,,,,,,0,0,0,0,0
+98,"A 26-year-old male presents to his primary care physician with complaints of burning with urination, penile discharge, a",ANTIGENIC VARIATION,,,,,,,0,0,0,0,0
+99,A 37-year-old man with no significant past medical history is rear-ended in a motor vehicle accident. He reported signif,CERVICAL IMMOBILIZATION,,,,,,,0,0,0,0,0
+100,"A 43-year-old man with a history of schizophrenia, currently controlled with medication, comes in for an appointment wit",BROMOCRIPTINE,,,,,,,0,0,0,0,0
+101,A 2-day-old male newborn is brought to the physician because of yellowing of the skin and sclerae for 16 hours. He had p,ANTI-B ANTIBODIES,,,,,,,0,0,0,0,0
+102,A 65-year old man presents with gradually worsening rigidity of his arms and legs and slowness in performing tasks. He s,AMANTADINE,,,,,,,0,0,0,0,0
+103,The patient is given prophylactic labetalol and magnesium sulfate. Examination shows absent deep tendon reflexes bilater,STOP MAGNESIUM SULFATE AND GIVE CALCIUM GLUCONATE,,,,,,,0,0,0,0,0
+104,A 75-year-old woman is brought by a patrolman to the emergency department because of altered mental status. She was foun,MYXEDEMA COMA,,,,,,,0,0,0,0,0
+105,A 66-year-old male presents to his primary care physician to discuss his increasing shortness of breathover the last 3 m,AORTIC REGURGITATION,,,,,,,0,0,0,0,0
+106,A 28-year-old woman presents following a suicide attempt 2 days ago. She says that her attempt was a result of a fight w,BORDERLINE PERSONALITY DISORDER,,,,,,,0,0,0,0,0
+107,A 50-year-old man presents to his primary care doctor following an inguinal hernia repair. The patient reports no pain i,POSITIVE EMISSION TOMOGRAPHY (PET) OF CHEST NOW,,,,,,,0,0,0,0,0
+108,A 29-year-old man comes in for evaluation of infertility. He has been trying to conceive for over 2 years with his wife ,PRIMARY SPERMATOCYTE,,,,,,,0,0,0,0,0
+109,"A 13-year-old boy presents to the emergency department with severe knee, hip, and groin pain. The patient has a past med",SURGICAL PINNING OF THE FEMORAL HEAD,,,,,,,0,0,0,0,0
+110,A 28-year-old man comes to the physician because of diarrhea and crampy abdominal pain for 5 weeks. He has had up to 4 b,STOOL LEUKOCYTES,,,,,,,0,0,0,0,0
+111,"A 51-year-old man is brought to the emergency department because of a 2-day history of fever, abdominal pain, and confus",BACTERIAL TRANSLOCATION,,,,,,,0,0,0,0,0
+112,An 18-month-old girl is brought to the emergency department because of a cough that her parents are worried about. She h,RACEMIC EPINEPHRINE AND INTRAMUSCULAR CORTICOSTEROID THERAPY,,,,,,,0,0,0,0,0
+113,A 43-year-old woman presents with complaints of retrosternal burning associated with eating. It has persisted for the pa,ESOPHAGEAL FIBROSIS,,,,,,,0,0,0,0,0
+114,A 67-year-old man with chronic kidney disease comes to the physician because of worsening fatigue and shortness of breat,JAK/STAT,,,,,,,0,0,0,0,0
+115,"A 41-year-old man presents to the emergency department with a 6-hour history of muscle cramping, decreased appetite, and",METFORMIN,,,,,,,0,0,0,0,0
+116,A scientist is studying the properties of myosin-actin interactions in a sample of human muscle tissue. She has identifi,POWER STROKE,,,,,,,0,0,0,0,0
+117,A 16-year-old boy with a seizure disorder and cognitive delay is brought to the physician because of progressively worse,TSC1 GENE ON CHROMOSOME 9,,,,,,,0,0,0,0,0
+118,"A 66-year-old man presents to the emergency department with abdominal pain, nausea, and vomiting. He endorses diffuse ab",METFORMIN,,,,,,,0,0,0,0,0
+119,A 56-year-old man comes to the clinic for a check-up. He presents with a 1-year history of worsening shortness of breath,CHRONIC OBSTRUCTIVE PULMONARY DISEASE,,,,,,,0,0,0,0,0
+120,"A 25-year-old zookeeper presents to the office complaining of a dry cough, fever, and chills for the past month. He stat",AVOID EXPOSURE TO BIRDS,,,,,,,0,0,0,0,0
+121,A 60-year-old female presents to her gynecologist with vaginal bleeding. She underwent menopause ten years prior. She ha,UTERINE ARTERY,,,,,,,0,0,0,0,0
+122,A 40-year-old man presents to the physician with progressive weight loss for the last 3 months. He also says he frequent,EPSTEIN-BARR VIRUS,,,,,,,0,0,0,0,0
+123,A 28-year-old gravida 1 at 32 weeks gestation is evaluated for an abnormal ultrasound that showed fetal microcephaly. Ea,ZIKA VIRUS,,,,,,,0,0,0,0,0
+124,"A 41-year-old G3P1 woman presents with a sudden onset throbbing headache, tinnitus, nausea, and left-sided weakness. Pat",MIXING STUDY,,,,,,,0,0,0,0,0
+125,"A obstetrician is working in a developing country to help promote maternal health and fetal well being. While there, he ",DIARRHEA,,,,,,,0,0,0,0,0
+126,A 33-year-old nurse is referred to an infectious disease specialist after she exhibited a PPD skin test with 17 mm of in,ISONIAZID,,,,,,,0,0,0,0,0
+127,An 81-year-old woman is brought to the emergency room by her son after witnessing the patient fall and hit her head. The,HERNIATION OF THE UNCUS,,,,,,,0,0,0,0,0
+128,A 67-year-old man with peripheral neuropathy comes to the physician for a follow-up examination after the results of ser,NATURAL KILLER CELLS,,,,,,,0,0,0,0,0
+129,A 47-year-old woman comes to the physician because of progressive muscle weakness for five months. She feels that the mu,INTRAFASCICULAR INFILTRATION ON MUSCLE BIOPSY,,,,,,,0,0,0,0,0
+130,A 41-year-old man presents to the emergency room with sudden onset of blurry vision one hour ago. He states that he was ,DECREASED ACETYLCHOLINE RELEASE,,,,,,,0,0,0,0,0
+131,A 4-week-old female newborn is brought to the physician because of increasing yellowing of her eyes and skin for 2 weeks,BILIARY ATRESIA,,,,,,,0,0,0,0,0
+132,"A 43-year-old man comes to the emergency department with nausea, abdominal discomfort, diarrhea, and progressive periora",QT PROLONGATION,,,,,,,0,0,0,0,0
+133,A 68-year-old woman presents with left lower quadrant pain that worsens with defecation. She describes the pain as 'cram,DIVERTICULITIS,,,,,,,0,0,0,0,0
+134,A 67-year-old man presents to his primary care physician for erectile dysfunction. He states that for the past month he ,AORTOILIAC ATHEROSCLEROSIS,,,,,,,0,0,0,0,0
+135,A 55-year-old man with a history of chronic glomerulonephritis due to IgA nephropathy presents to your office with bone ,"INCREASED PTH, DECREASED CALCIUM, INCREASED PHOSPHATE, DECREASED CALCITRIOL",,,,,,,0,0,0,0,0
+136,A medical researcher is studying the physiology of the immune system in order to better understand the effects of HIV on,BINDS ENDOGENOUS PEPTIDES THAT HAVE BEEN TRANSPORTED BY THE TAP CHANNEL,,,,,,,0,0,0,0,0
+137,"A 61-year-old Caucasian male presents to your office with chest pain. He states that he is worried about his heart, as h",GASTROESOPHAGEAL JUNCTION INCOMPETENCE,,,,,,,0,0,0,0,0
+138,"A 36-year-old woman comes to the clinic because of tearing and a foreign body sensation in her eyes bilaterally, which h",TREATMENT WITH RADIOACTIVE IODINE,,,,,,,0,0,0,0,0
+139,A 7-year-old boy is brought to a pediatrician by his parents for evaluation of frequent bed wetting during the night. A ,REASSURING THE PARENTS AND USE OF AN ENURESIS ALARM,,,,,,,0,0,0,0,0
+140,A 52-year-old man with a history of gastric cancer that was treated with subtotal gastrectomy dies in a motor vehicle co,DECREASED POSITIONAL SENSE IN THE IPSILATERAL LEG,,,,,,,0,0,0,0,0
+141,A 24-year-old pregnant woman at 28 weeks gestation presents to the emergency department with complaints of fever with ch,AMOXICILIN,,,,,,,0,0,0,0,0
+142,A 25-year-old woman presents to her physician with a four month history of fatigue and weakness. The weakness has been p,MRI OF THE ADRENAL GLANDS,,,,,,,0,0,0,0,0
+143,A 67-year-woman with non-Hodgkin lymphoma comes to the physician because of progressively increasing numbness and tingli,INHIBITION OF BETA-TUBULIN POLYMERIZATION,,,,,,,0,0,0,0,0
+144,A 68-year-old man comes to the physician with a 1-week history of painless hematuria. A CT scan of the urinary tract sho,AROMATIC AMINES,,,,,,,0,0,0,0,0
+145,"A 14-year-old girl comes to the physician with her father for evaluation of her short stature. She feels well overall, b",REASSURANCE AND FOLLOW-UP,,,,,,,0,0,0,0,0
+146,"A 5-year-old boy is brought to the physician because of facial swelling that started 5 days ago. Two weeks ago, he had a",NORMAL LIGHT MICROSCOPY FINDINGS,,,,,,,0,0,0,0,0
+147,A 60-year-old man is referred to a dermatologist by his family physician for management of a rare case of dermatitis tha,TUMOR ARISING FROM CUTANEOUS T CELLS,,,,,,,0,0,0,0,0
+148,A 35-year-old woman comes to the physician because she has been feeling very stressed over the past several months. Duri,COGNITIVE BEHAVIORAL THERAPY,,,,,,,0,0,0,0,0
+149,A 65-year-old man presents to his primary care physician for a change in his behavior over the past few months. Initiall,FRONTOTEMPORAL DEMENTIA,,,,,,,0,0,0,0,0
+150,"An 11-month-old boy is brought to the clinic by his mother for a rash on his trunk, which he has had for the past 2 days",IMMUNOGLOBULIN- IGM,,,,,,,0,0,0,0,0
+151,"A 52-year-old man is brought to the emergency department with dry cough, shortness of breath, and low-grade fever that b",LEVOFLOXACIN,,,,,,,0,0,0,0,0
+152,A transvaginal ultrasound shows an intrauterine heteroechoic mass with numerous anechoic spaces and no identifiable fetu,THECA LEUTEIN CYSTS,,,,,,,0,0,0,0,0
+153,"A 75-year-old woman is brought to the emergency department by her son because of a 2-day history of fever, headache, mal",SERUM ANTIBODIES AGAINST HEMAGGLUTININ,,,,,,,0,0,0,0,0
+154,A 71-year-old man comes to the physician for a routine visit. His psychiatric history is significant for major depressio,PREVIOUS SUICIDE ATTEMPT,,,,,,,0,0,0,0,0
+155,"A 4-year-old boy is brought to the physician because of a generalized rash for 3 days. During this period, he has had se",CHICKENPOX,,,,,,,0,0,0,0,0
+156,A 19-year-old man is brought to the emergency department by ambulance because of unusual behavior that started 3 hours a,SYNTHETIC CATHINONE INTOXICATION,,,,,,,0,0,0,0,0
+157,A 22-year-old male presents to the emergency room complaining of neck stiffness. He reports that his neck started “locki,BENZTROPINE,,,,,,,0,0,0,0,0
+158,A 13-month-old boy is brought to the physician for a well-child examination. Physical examination shows hepatosplenomega,ACUTE PANCREATITIS,,,,,,,0,0,0,0,0
+159,"A 41-year-old man comes to the emergency department with nausea, abdominal discomfort, and diarrhea for the past 2 days.",ADMINISTER CALCIUM GLUCONATE,,,,,,,0,0,0,0,0
+160,"A 9-year-old boy is brought to a physician by his mother for evaluation of generalized weakness, increased urination, an",BARTTER'S SYNDROME,,,,,,,0,0,0,0,0
+161,A 5-year-old boy of African descent is presented to the emergency department by his parents. The child is clutching his ,1 AND 2,,,,,,,0,0,0,0,0
+162,A 51-year-old woman presents to her primary care physician complaining of months of dry mouth and dry eyes. She says the,NON-HODGKIN LYMPHOMA,,,,,,,0,0,0,0,0
+163,"A 59-year-old man presents to his primary care provider with fatigue, a progressively worsening cough with flecks of blo",LINEAR IGG STAINING ON IMMUNOFLUORESCENCE,,,,,,,0,0,0,0,0
+164,A 32-year-old man with HIV infection is brought to the emergency department by his roommate because of a 2-week history ,POSITIVE LATEX AGGLUTINATION TEST,,,,,,,0,0,0,0,0
+165,"A 70-year-old woman comes to the physician for the evaluation of back pain. For the past six days, she has had a burning",VIRAL REACTIVATION IN DORSAL ROOT GANGLIA,,,,,,,0,0,0,0,0
+166,A type of fatal adrenal cancer has an average survival rate of 3 years after the onset of clinically significant symptom,USING MORTALITY RATES IN THE ANALYSIS,,,,,,,0,0,0,0,0
+167,A 60-year-old man presents to the office for shortness of breath. The shortness of breath started a year ago and is exac,SILICOSIS,,,,,,,0,0,0,0,0
+168,A 43-year-old woman is brought to the emergency department by her brother for severe chest pain. The patient recently lo,TAKOTSUBO CARDIOMYOPATHY,,,,,,,0,0,0,0,0
+169,A 56-year-old man is brought to the emergency department. He was found unconscious on the street. The staff recognizes h,UNDERGO UPPER GI ENDOSCOPY,,,,,,,0,0,0,0,0
+170,"An 8-year-old girl comes to the physician because of a 2-day history of hematuria. Two weeks ago, she had a sore throat ",ANTIGEN-ANTIBODY COMPLEXES,,,,,,,0,0,0,0,0
+171,A 25-year-old man presents to the emergency department with altered mental status. He was found down in the middle of th,MIOSIS,,,,,,,0,0,0,0,0
+172,A 38-year-old G4P3 presents to her obstetrician’s office for her 20-week anatomy ultrasound. She reports that she feels ,PROMINENT OCCIPUT,,,,,,,0,0,0,0,0
+173,"An 83-year-old man is admitted to the hospital with fever, weakness, and decreased responsiveness. He is diagnosed with ",OLANZAPINE,,,,,,,0,0,0,0,0
+174,"A 26-year-old woman comes to the physician because of fatigue, weight loss, and muscle aches during the past 2 months. T",INCREASE IN SERUM ACTH,,,,,,,0,0,0,0,0
+175,An investigator conducts a study to determine whether earlier detection of glioblastoma multiforme (GBM) in patients inc,LEAD-TIME BIAS,,,,,,,0,0,0,0,0
+176,A 23-year-old man is brought to the emergency department 25 minutes after being involved in a high-speed motor vehicle c,NEEDLE DECOMPRESSION,,,,,,,0,0,0,0,0
+177,A novel type of PET radiotracer is being developed to evaluate patients with Parkinson’s disease. A clinical research st,580 / (580 + 20),,,,,,,0,0,0,0,0
+178,A 55-year-old man presents to a rheumatologist with bilateral wrist and knee pain that has been present for the last 10 ,OSTEOARTHRITIS,,,,,,,0,0,0,0,0
+179,A 40-year-old businessman who was previously well is brought into the emergency department by his assistant with a compl,RIGHT-SIDED ANALGESIA,,,,,,,0,0,0,0,0
+180,"A previously healthy 19-year-old man comes to the physician with right-sided, dull, throbbing scrotal pain for 12 hours.",CHLAMYDIA TRACHOMATIS INFECTION,,,,,,,0,0,0,0,0
+181,A 4-month-old infant is brought to the office by his parents due to sudden nose bleeding without trauma of any kind. He ,GLANZMANN’S THROMBASTHENIA,,,,,,,0,0,0,0,0
+182,A 6-year-old boy is brought to the physician by his mother because of a 2-day history of dysuria and increased urinary f,"NON-ENVELOPED WITH LINEAR, DOUBLE-STRANDED DNA",,,,,,,0,0,0,0,0
+183,A 13-year-old boy is brought to his pediatrician due to a left breast lump under his nipple. He noticed it last month an,GLANDULAR TISSUE ENLARGEMENT,,,,,,,0,0,0,0,0
+184,A 35-year-old Caucasian female presents to the emergency room with unilateral leg swelling. She reports that she develop,RESISTANCE TO CLOTTING FACTOR DEGRADATION,,,,,,,0,0,0,0,0
+185,A 78-year-old man is brought to the physician by his daughter because of increasing forgetfulness over the past 5 weeks.,FLUOXETINE,,,,,,,0,0,0,0,0
+186,A previously healthy 18-month-old boy is brought to the physician by his parents for evaluation of an abdominal mass not,SEEK A COURT ORDER FOR NEOADJUVANT CHEMOTHERAPY,,,,,,,0,0,0,0,0
+187,A laboratory primarily involved with studying cellular proofreading mechanisms is investigating the question of whether ,THE MISCHARGED TRNA WITH VALINE WILL BE INCORPORATED IN THE CODONS THAT SPECIFICY FOR LYSINE,,,,,,,0,0,0,0,0
+188,"A 65-year-old man with metastatic lung cancer has been experiencing severe, unremitting pain. He has required escalating",KETAMINE,,,,,,,0,0,0,0,0
+189,A 27-year-old man presents to the emergency room complaining of left shoulder pain for several weeks. He says that the p,ROTATOR CUFF INJURY,,,,,,,0,0,0,0,0
+190,A 17-year-old woman presents to your office concerned that she has not had her menstrual period in 4 months. She states ,EROSION OF TOOTH ENAMEL,,,,,,,0,0,0,0,0
+191,"A 23-year-old college student presents to the clinic with a history of intermittent chest discomfort. He reports that, a",CITALOPRAM,,,,,,,0,0,0,0,0
+192,A stillborn infant is delivered at 38 weeks' gestation to a 32-year-old woman. The mother had no prenatal care. Examinat,MATERNAL DIABETES,,,,,,,0,0,0,0,0
+193,"Please refer to the summary above to answer this question
+The authors of the study have decided to conduct a follow-up a",EFFECT MODIFICATION,,,,,,,0,0,0,0,0
+194,"During a Mycobacterium tuberculosis infection, Th1 cells secrete a factor capable of stimulating phagosome-lysosome fusi",IFN-GAMMA,,,,,,,0,0,0,0,0
+195,A 3-year-old boy is brought to the pediatrician because of abdominal pain and constipation for 3 weeks. His mother says ,CONVERSION OF AMINOLEVULINIC ACID TO PORPHOBILINOGEN,,,,,,,0,0,0,0,0
+196,A group of researchers conducted a study to determine whether there is an association between folic acid supplementation,RECALL BIAS,,,,,,,0,0,0,0,0
+197,A student studying pharmacology is a member of a team that is conducting research related to the elimination of multiple,WARFARIN,,,,,,,0,0,0,0,0
+198,A 40-year-old woman presents to her primary care physician for a checkup. She has felt weaker lately and has lost some w,CHRONIC KIDNEY FAILURE,,,,,,,0,0,0,0,0
+199,A 28-year-old woman comes to the obstetrics and gynecology clinic because she has been unsuccessfully trying to conceive,PROSTATE CANCER,,,,,,,0,0,0,0,0
+200,A 2-year-old girl with recurrent urinary tract infections is brought to the physician for a follow-up examination. Renal,CORTICAL THINNING WITH TUBULAR ATROPHY,,,,,,,0,0,0,0,0
