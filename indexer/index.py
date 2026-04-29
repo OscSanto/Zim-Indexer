@@ -7,6 +7,7 @@ Index type chosen automatically by corpus size:
 
 Both are wrapped in IndexIDMap so FAISS vector ID == SQLite chunks.id.
 """
+import os
 import numpy as np
 import faiss
 from pathlib import Path
@@ -65,9 +66,10 @@ def load_or_create(index_path: Path, dim: int = 384,
 def save(index: faiss.IndexIDMap, index_path: Path) -> None:
     tmp = index_path.with_suffix(".tmp")
     faiss.write_index(index, str(tmp))
-    if index_path.exists():
-        index_path.unlink()
-    tmp.rename(index_path)
+    if not tmp.exists():
+        print(f"[warn] faiss.write_index produced no file at {tmp} — skipping checkpoint")
+        return
+    os.replace(str(tmp), str(index_path))  # atomic on Linux/macOS, handles existing file
 
 
 def add_vectors(index: faiss.IndexIDMap, chunk_ids: list[int],

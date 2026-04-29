@@ -469,7 +469,32 @@ def run_embed(
         if done % (batch_size * NUM_STREAMS * 5) == 0 or done >= total_pending:
             elapsed = time.time() - t0
             rate    = done / elapsed if elapsed > 0 else 0
-            log(f"  Embedded {done:,}/{total_pending:,} ({rate:.0f} chunks/s)")
+            eta     = (total_pending - done) / rate if rate > 0 else 0
+            eta_str = f"{int(eta//3600)}h{int((eta%3600)//60)}m" if eta > 60 else f"{int(eta)}s"
+
+            # disk free
+            try:
+                import shutil as _shutil
+                free_gb = _shutil.disk_usage(str(idx_path.parent)).free / 1e9
+                disk_str = f"  disk={free_gb:.1f}GB free"
+            except Exception:
+                disk_str = ""
+
+            # GPU utilisation (nvidia-smi, optional)
+            try:
+                import subprocess as _sp
+                _r = _sp.run(
+                    ["nvidia-smi", "--query-gpu=utilization.gpu,memory.used,memory.total",
+                     "--format=csv,noheader,nounits"],
+                    capture_output=True, text=True, timeout=2,
+                )
+                util, mem_used, mem_total = _r.stdout.strip().split(", ")
+                gpu_str = f"  gpu={util}% mem={int(mem_used)}/{int(mem_total)}MB"
+            except Exception:
+                gpu_str = ""
+
+            log(f"  Embedded {done:,}/{total_pending:,} ({rate:.0f} chunks/s)"
+                f"  ETA {eta_str}{gpu_str}{disk_str}")
 
     prefetch_thread.join(timeout=1.0)  # clean up
 
