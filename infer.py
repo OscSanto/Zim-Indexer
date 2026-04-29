@@ -49,6 +49,12 @@ def _load_medqa_jsonl(path: Path, n: int) -> list[dict]:
             obj  = json.loads(line)
             opts = obj.get("options", {})
             key  = (obj.get("answer_idx") or obj.get("answer", "")).strip().upper()
+            # Some MedQA variants store full answer text in answer_idx, not the letter
+            if len(key) > 1:
+                for k, v in opts.items():
+                    if v.strip().upper() == key:
+                        key = k.strip().upper()
+                        break
             rows.append({
                 "question":     obj["question"],
                 "options":      opts,
@@ -328,6 +334,11 @@ def _parse_letter(response: str) -> str | None:
         response = response.split("</think>", 1)[1].strip()
     else:
         response = re.sub(r"<think>.*", "", response, flags=re.DOTALL).strip()
+    # Map numeric answers to letters (some models output 1-4 instead of A-D)
+    if response and response[0] in "1234567890":
+        _num_map = {"1": "A", "2": "B", "3": "C", "4": "D",
+                    "5": "E", "6": "F", "7": "G", "8": "H"}
+        return _num_map.get(response[0])
     # First non-whitespace char if it's a letter A-J
     if response and response[0].upper() in "ABCDEFGHIJ":
         return response[0].upper()
@@ -362,7 +373,7 @@ def ollama_generate(
         "prompt": prompt,
         "stream": False,
         "options": {"temperature": 0, "num_predict": 16,
-                    "stop": [")", " -", "\n\n"]},
+                    "stop": [")", " -", "\n\n", "<|im_end|>", "<|end|>"]},
     }
     try:
         r = requests.post(url, json=payload, timeout=timeout)
