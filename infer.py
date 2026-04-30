@@ -697,6 +697,7 @@ def main():
                         help="Context token budgets to test (0 = unlimited). Default: 128 512")
     parser.add_argument("--verbose",       action="store_true",        help="Log final LLM context to stderr")
     parser.add_argument("--log",           action="store_true",        help="Write detailed per-question JSONL log (prompt, hits, response) alongside --out")
+    parser.add_argument("--condition",     default=None,               help="Run only conditions whose name contains this string (e.g. 'No Retrieval', 'Struct+Lead', 'Flat')")
     parser.add_argument("--system-prompt", default=None,               help="System prompt text (default: built-in medical expert prompt)")
     args = parser.parse_args()
 
@@ -750,6 +751,8 @@ def main():
     for model in args.models:
         short = model.replace(":", "-")
         for cond_name, idx_dir, cfg in CONDITIONS:
+            if args.condition and args.condition.lower() not in cond_name.lower():
+                continue
             if idx_dir is not None and not idx_dir.exists():
                 print(f"\n  [skip] {cond_name} — index not found at {idx_dir}")
                 continue
