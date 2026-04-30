@@ -385,7 +385,24 @@ def main():
     all_results: list[tuple[str, list[dict]]] = []
     agg_metrics: list[tuple[str, dict]] = []
 
+    ckpt_path = out_path.with_stem(out_path.stem + "_checkpoint")
+
+    # Load completed systems from a previous crashed run
+    completed: dict[str, tuple[list[dict], dict]] = {}
+    if ckpt_path.exists():
+        with open(ckpt_path, encoding="utf-8") as f:
+            for line in f:
+                entry = json.loads(line)
+                completed[entry["label"]] = (entry["results"], entry["metrics"])
+        print(f"  Resuming — {len(completed)} system(s) already done: {list(completed)}")
+
     for label, index_dir, cfg in systems_to_run:
+        if label in completed:
+            print(f"\n  [resume] {label} — loaded from checkpoint")
+            results, metrics = completed[label]
+            all_results.append((label, results))
+            agg_metrics.append((label, metrics))
+            continue
         if not index_dir.exists():
             print(f"\n  [skip] {label} — index not found: {index_dir}")
             continue
@@ -396,9 +413,14 @@ def main():
         metrics["q_per_s"]   = results[0]["q_per_s"]   if results else 0.0
         all_results.append((label, results))
         agg_metrics.append((label, metrics))
+        # Save checkpoint after each system completes
+        with open(ckpt_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"label": label, "results": results, "metrics": metrics},
+                               default=str) + "\n")
 
     print_table(agg_metrics)
     export_csv(out_path, agg_metrics, all_results)
+    ckpt_path.unlink(missing_ok=True)  # clean up checkpoint on successful completion
 
 
 if __name__ == "__main__":
