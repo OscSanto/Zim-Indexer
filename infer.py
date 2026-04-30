@@ -509,7 +509,7 @@ def run_system(
                         "text":            h.get("text", ""),
                         "lead_context":    h.get("lead_context", ""),
                         "section_context": h.get("section_context", ""),
-                        "score":           h.get("score", 0),
+                        "score":           h.get("rrf_score", h.get("score", 0)),
                     }
                     for h in hits
                 ],
