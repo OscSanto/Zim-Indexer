@@ -720,6 +720,7 @@ def main():
         "use_mention_penalty": False,  # hand-tuned, disabled for reproducibility
         "use_nav_boost": False,        # hand-tuned, disabled for reproducibility
         "eval_rrf_k": 60, "eval_diversity_max": 6,
+        "embed_model": "BAAI/bge-small-en-v1.5",
     }
     CONDITIONS: list[tuple[str, Path | None, dict]] = [
         ("No Retrieval",      None,           {}),
