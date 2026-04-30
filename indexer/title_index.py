@@ -84,10 +84,7 @@ def build(zim_path: Path, cfg: dict | None = None,
     from libzim.reader import Archive
     from indexer.embed import encode
 
-    model_name = (cfg or {}).get(
-        "embed_model",
-        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    )
+    model_name = (cfg or {}).get("embed_model", "BAAI/bge-small-en-v1.5")
     cache_dir = (cfg or {}).get("fastembed_cache_path", None)
 
     archive  = Archive(str(zim_path))

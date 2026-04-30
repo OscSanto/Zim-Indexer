@@ -124,8 +124,7 @@ def search(out_dir: Path, query: str, top_k: int = 10,
     """
     from indexer.embed import encode
 
-    model_name = _g(cfg, "embed_model",
-                    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+    model_name = _g(cfg, "embed_model", "BAAI/bge-small-en-v1.5")
     cache_dir  = _g(cfg, "fastembed_cache_path", None)
     dim        = int(_g(cfg, "embed_dim", 384))
     nprobe     = int(_g(cfg, "faiss_nprobe", 64))
