@@ -451,6 +451,21 @@ def run_system(
     ram_mb = ollama_ram_mb(host, port, model)
     print(f" ready  RAM={ram_mb:.0f}MB")
 
+    # Pre-retrieve all questions before Ollama inference to avoid RAM contention
+    prefetched_hits: list[list[dict]] = []
+    if index_dir is not None:
+        print(f"  [{label}]  retrieving {n} queries…", end="", flush=True)
+        from indexer.query import search
+        for q in questions:
+            try:
+                prefetched_hits.append(search(index_dir, q["question"], top_k=top_k, cfg=cfg))
+            except Exception as e:
+                print(f"\n  [warn] retrieval: {e}")
+                prefetched_hits.append([])
+        print(f" done", flush=True)
+    else:
+        prefetched_hits = [[] for _ in questions]
+
     poller = _SysPoller(interval=2.0).start()
 
     t0 = time.time()
@@ -464,13 +479,7 @@ def run_system(
         )
         sys.stdout.flush()
 
-        hits = []
-        if index_dir is not None:
-            try:
-                from indexer.query import search
-                hits = search(index_dir, q["question"], top_k=top_k, cfg=cfg)
-            except Exception as e:
-                print(f"\n  [warn] retrieval q{i+1}: {e}")
+        hits = prefetched_hits[i]
 
         prompt, ctx_chars = _build_prompt(q, hits if hits else None,
                                           max_ctx_tokens=max_ctx_tokens,
@@ -721,6 +730,7 @@ def main():
         "use_nav_boost": False,        # hand-tuned, disabled for reproducibility
         "eval_rrf_k": 60, "eval_diversity_max": 6,
         "embed_model": "BAAI/bge-small-en-v1.5",
+        "faiss_mmap":  True,
     }
     CONDITIONS: list[tuple[str, Path | None, dict]] = [
         ("No Retrieval",      None,           {}),
