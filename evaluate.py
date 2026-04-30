@@ -229,7 +229,11 @@ def evaluate_system(
         })
 
     elapsed = time.time() - t0
-    print(f"\r  [{label}]  {n}/{n} done in {elapsed:.1f}s ({n/elapsed:.1f} q/s)      ")
+    q_per_s = n / elapsed if elapsed > 0 else 0.0
+    print(f"\r  [{label}]  {n}/{n} done in {elapsed:.1f}s ({q_per_s:.2f} q/s)      ")
+    for r in results:
+        r["elapsed_s"] = round(elapsed, 2)
+        r["q_per_s"]   = round(q_per_s, 3)
     return results
 
 
@@ -282,12 +286,14 @@ def export_csv(out_path: Path, systems: list[tuple[str, dict]],
     agg_path = out_path.with_stem(out_path.stem + "_metrics")
     with open(agg_path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["system", "n", "hit@1", "hit@3", "hit@5", "hit@10", "mrr@10"])
+        w.writerow(["system", "n", "hit@1", "hit@3", "hit@5", "hit@10", "mrr@10", "elapsed_s", "q_per_s"])
         for label, m in systems:
             w.writerow([label, m["n"],
                         f"{m['hit@1']:.4f}", f"{m['hit@3']:.4f}",
                         f"{m['hit@5']:.4f}", f"{m['hit@10']:.4f}",
-                        f"{m['mrr@10']:.4f}"])
+                        f"{m['mrr@10']:.4f}",
+                        f"{m.get('elapsed_s', 0):.2f}",
+                        f"{m.get('q_per_s', 0):.3f}"])
     print(f"  Metrics → {agg_path}")
 
     # Per-question sheet
@@ -355,6 +361,8 @@ def main():
         "use_lead_augment": False,
         "eval_rrf_k":       60,
         "eval_diversity_max": 6,
+        "embed_model":      "BAAI/bge-small-en-v1.5",
+        "faiss_mmap":       True,
     }
 
     # System 1: BM25 only on structured index
@@ -384,6 +392,8 @@ def main():
         print(f"\nRunning: {label}")
         results  = evaluate_system(index_dir, questions, top_k, cfg, label)
         metrics  = compute_metrics(results, top_k)
+        metrics["elapsed_s"] = results[0]["elapsed_s"] if results else 0.0
+        metrics["q_per_s"]   = results[0]["q_per_s"]   if results else 0.0
         all_results.append((label, results))
         agg_metrics.append((label, metrics))
 
