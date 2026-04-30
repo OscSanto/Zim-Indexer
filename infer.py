@@ -452,16 +452,31 @@ def run_system(
     print(f" ready  RAM={ram_mb:.0f}MB")
 
     # Pre-retrieve all questions before Ollama inference to avoid RAM contention
+    # Batch-embed once then reuse vectors — avoids N separate encode() calls
     prefetched_hits: list[list[dict]] = []
     if index_dir is not None:
-        print(f"  [{label}]  retrieving {n} queries…", end="", flush=True)
         from indexer.query import search
-        for q in questions:
+        from indexer.embed import encode
+        from indexer.db import open_db, init_fts
+        model_name = cfg.get("embed_model", "BAAI/bge-small-en-v1.5")
+        cache_dir  = cfg.get("fastembed_cache_path", None)
+        print(f"  [{label}]  embedding {n} queries…", end="", flush=True)
+        query_vecs = encode([q["question"] for q in questions], model_name, cache_dir)
+        print(f" done", flush=True)
+        db_path = index_dir / "data.db"
+        ret_con = open_db(db_path)
+        init_fts(ret_con)
+        print(f"  [{label}]  retrieving {n} queries…", end="", flush=True)
+        for i, q in enumerate(questions):
             try:
-                prefetched_hits.append(search(index_dir, q["question"], top_k=top_k, cfg=cfg))
+                prefetched_hits.append(
+                    search(index_dir, q["question"], top_k=top_k, cfg=cfg,
+                           query_vec=query_vecs[i], con=ret_con)
+                )
             except Exception as e:
                 print(f"\n  [warn] retrieval: {e}")
                 prefetched_hits.append([])
+        ret_con.close()
         print(f" done", flush=True)
     else:
         prefetched_hits = [[] for _ in questions]

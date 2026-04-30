@@ -208,12 +208,16 @@ def evaluate_system(
 
     n = len(questions)
 
-    # Batch embed all questions at once — far faster than one-at-a-time on CPU
+    # Batch embed all questions upfront — only when FAISS is actually used
     model_name = cfg.get("embed_model", "BAAI/bge-small-en-v1.5")
     cache_dir  = cfg.get("fastembed_cache_path", None)
-    print(f"  [{label}]  embedding {n} queries…", end="", flush=True)
-    query_vecs = encode([q["question"] for q in questions], model_name, cache_dir)
-    print(f" done", flush=True)
+    if cfg.get("use_faiss", True):
+        print(f"  [{label}]  embedding {n} queries…", end="", flush=True)
+        query_vecs = encode([q["question"] for q in questions], model_name, cache_dir)
+        print(f" done", flush=True)
+    else:
+        print(f"  [{label}]  BM25-only — skipping embedding")
+        query_vecs = [None] * n
 
     # Reuse one SQLite connection across all queries
     db_path = index_dir / "data.db"
