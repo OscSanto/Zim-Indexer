@@ -108,7 +108,8 @@ def _nav_boost(hits: list[dict], query: str,
 # ── Main search function ──────────────────────────────────────────────────────
 
 def search(out_dir: Path, query: str, top_k: int = 10,
-           threshold: float = 0.0, cfg: dict | None = None) -> list[dict]:
+           threshold: float = 0.0, cfg: dict | None = None,
+           query_vec=None, con=None) -> list[dict]:
     """
     Hybrid retrieval with toggleable signals.
 
@@ -145,8 +146,10 @@ def search(out_dir: Path, query: str, top_k: int = 10,
     if not db_path.exists():
         raise FileNotFoundError(f"No index found at {out_dir}")
 
-    con = open_db(db_path)
-    init_fts(con)
+    _own_con = con is None
+    if _own_con:
+        con = open_db(db_path)
+        init_fts(con)
 
     fetch_n = top_k * 6
 
@@ -159,7 +162,7 @@ def search(out_dir: Path, query: str, top_k: int = 10,
     if use_faiss and idx_path.exists():
         idx = faiss_index.load_or_create(idx_path, dim=dim, nprobe=nprobe, mmap=use_mmap)
         if idx.ntotal > 0:
-            qvec    = encode([query], model_name, cache_dir)[0]
+            qvec    = query_vec if query_vec is not None else encode([query], model_name, cache_dir)[0]
             results = faiss_index.search(idx, qvec, top_k=fetch_n)
             faiss_rank_map  = {cid: rank for rank, (cid, _) in enumerate(results)}
             faiss_score_map = {cid: sc   for cid, sc in results}
@@ -247,7 +250,8 @@ def search(out_dir: Path, query: str, top_k: int = 10,
             if first and first != hit.get("text"):
                 hit["section_context"] = first
 
-    con.close()
+    if _own_con:
+        con.close()
 
     if logger.isEnabledFor(logging.DEBUG):
         for i, hit in enumerate(hits[:top_k], 1):

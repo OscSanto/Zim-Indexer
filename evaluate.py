@@ -203,9 +203,24 @@ def evaluate_system(
     label: str,
 ) -> list[dict]:
     from indexer.query import search
+    from indexer.embed import encode
+    from indexer.db import open_db, init_fts
+
+    n = len(questions)
+
+    # Batch embed all questions at once — far faster than one-at-a-time on CPU
+    model_name = cfg.get("embed_model", "BAAI/bge-small-en-v1.5")
+    cache_dir  = cfg.get("fastembed_cache_path", None)
+    print(f"  [{label}]  embedding {n} queries…", end="", flush=True)
+    query_vecs = encode([q["question"] for q in questions], model_name, cache_dir)
+    print(f" done", flush=True)
+
+    # Reuse one SQLite connection across all queries
+    db_path = index_dir / "data.db"
+    con = open_db(db_path)
+    init_fts(con)
 
     results = []
-    n = len(questions)
     t0 = time.time()
 
     for i, q in enumerate(questions):
@@ -213,7 +228,8 @@ def evaluate_system(
         sys.stdout.flush()
 
         try:
-            hits = search(index_dir, q["question"], top_k=top_k, cfg=cfg)
+            hits = search(index_dir, q["question"], top_k=top_k, cfg=cfg,
+                          query_vec=query_vecs[i], con=con)
         except Exception as e:
             hits = []
             print(f"\n  [warn] q{i+1} error: {e}")
@@ -228,6 +244,7 @@ def evaluate_system(
             "hits":         hits,
         })
 
+    con.close()
     elapsed = time.time() - t0
     q_per_s = n / elapsed if elapsed > 0 else 0.0
     print(f"\r  [{label}]  {n}/{n} done in {elapsed:.1f}s ({q_per_s:.2f} q/s)      ")
