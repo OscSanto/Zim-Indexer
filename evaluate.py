@@ -43,12 +43,18 @@ def _load_medqa_jsonl(path: Path, n: int) -> list[dict]:
                 continue
             obj = json.loads(line)
             opts = obj.get("options", {})
-            answer_idx = obj.get("answer_idx") or obj.get("answer", "")
+            key = (obj.get("answer_idx") or obj.get("answer", "")).strip().upper()
+            # Some MedQA variants store full answer text in answer_idx, not the letter
+            if len(key) > 1:
+                for k, v in opts.items():
+                    if v.strip().upper() == key:
+                        key = k.strip().upper()
+                        break
             rows.append({
                 "question":     obj["question"],
                 "options":      opts,
-                "correct_key":  answer_idx.strip().upper(),
-                "correct_text": opts.get(answer_idx.strip().upper(), ""),
+                "correct_key":  key,
+                "correct_text": opts.get(key, ""),
             })
             if len(rows) >= n:
                 break
