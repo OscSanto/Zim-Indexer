@@ -1,6 +1,7 @@
 """Evaluate tab — retrieval evaluation and LLM inference against QA datasets."""
 from __future__ import annotations
 
+import csv
 import queue
 import threading
 import time
@@ -31,7 +32,7 @@ class EvaluateTab(ttk.Frame):
 
     def _build_ui(self) -> None:
         self.columnconfigure(0, weight=1)
-        self.rowconfigure(4, weight=1)
+        self.rowconfigure(5, weight=1)
 
         # ── Paths ─────────────────────────────────────────────────────────────
         path_frame = ttk.LabelFrame(self, text="Paths", padding=8)
@@ -51,6 +52,9 @@ class EvaluateTab(ttk.Frame):
         self._struct_var    = tk.StringVar(value=cfg.get("last_index_dir", ""))
         self._flat_var      = tk.StringVar()
         self._out_var       = tk.StringVar(value="results")
+        self._subset_var    = tk.StringVar(value=cfg.get("last_eval_subset", ""))
+        self._audit_var     = tk.StringVar(value=cfg.get("last_eval_audit_csv", ""))
+        self._gold_var      = tk.StringVar(value=cfg.get("last_eval_gold_subset", ""))
         self._dataset_var.trace_add("write", lambda *_: self._on_dataset_change())
 
         _row(path_frame, "Dataset:",          self._dataset_var, self._browse_dataset, 0)
@@ -183,9 +187,51 @@ class EvaluateTab(ttk.Frame):
         self._prompt_text.insert("1.0", self._DEFAULT_PROMPT)
         self._prompt_text.grid(row=1, column=0, sticky="ew", pady=(4, 0))
 
+        # ── Workflow tools ───────────────────────────────────────────────────
+        tools = ttk.LabelFrame(self, text="Subset And Review Workflow", padding=8)
+        tools.grid(row=3, column=0, sticky="ew", padx=8, pady=(0, 4))
+        tools.columnconfigure(1, weight=1)
+
+        ttk.Label(
+            tools,
+            text=(
+                "Use this once per paper run: freeze a fixed 100-question subset, optionally make a quick 20-question subset, "
+                "export the manual audit CSV, review it, then build the gold retrieval subset."
+            ),
+            foreground="gray",
+            wraplength=920,
+            justify="left",
+        ).grid(row=0, column=0, columnspan=4, sticky="w", pady=(0, 6))
+
+        ttk.Label(tools, text="Fixed subset:").grid(row=1, column=0, sticky="w")
+        ttk.Entry(tools, textvariable=self._subset_var).grid(row=1, column=1, sticky="ew", padx=4)
+        ttk.Button(tools, text="Create Fixed 100", command=self._create_fixed_subset, width=16).grid(row=1, column=2, sticky="e", padx=4)
+        ttk.Button(tools, text="Create Quick 20", command=self._create_quick_subset, width=14).grid(row=1, column=3, sticky="e")
+
+        ttk.Label(tools, text="Audit CSV:").grid(row=2, column=0, sticky="w", pady=(4, 0))
+        ttk.Entry(tools, textvariable=self._audit_var).grid(row=2, column=1, sticky="ew", padx=4, pady=(4, 0))
+        ttk.Button(tools, text="Build Audit CSV", command=self._build_manual_audit_csv, width=16).grid(row=2, column=2, sticky="e", padx=4, pady=(4, 0))
+        ttk.Button(tools, text="View CSV", command=lambda: self._open_csv_viewer(self._audit_var.get().strip()), width=14).grid(row=2, column=3, sticky="e", pady=(4, 0))
+
+        ttk.Label(tools, text="Gold subset:").grid(row=3, column=0, sticky="w", pady=(4, 0))
+        ttk.Entry(tools, textvariable=self._gold_var).grid(row=3, column=1, sticky="ew", padx=4, pady=(4, 0))
+        ttk.Button(tools, text="Build Gold Subset", command=self._build_gold_subset_file, width=16).grid(row=3, column=2, sticky="e", padx=4, pady=(4, 0))
+        ttk.Button(tools, text="Open Any CSV…", command=self._choose_csv_viewer_file, width=14).grid(row=3, column=3, sticky="e", pady=(4, 0))
+
+        ttk.Label(
+            tools,
+            text=(
+                "When to use them: Fixed 100 for paper results, Quick 20 for fast smoke tests, Audit CSV for manual article-title review, "
+                "Gold subset for retrieval-only evaluation on questions whose answers clearly exist as ZIM articles."
+            ),
+            foreground="gray",
+            wraplength=920,
+            justify="left",
+        ).grid(row=4, column=0, columnspan=4, sticky="w", pady=(6, 0))
+
         # ── Action buttons ────────────────────────────────────────────────────
         btn_frame = ttk.Frame(self, padding=(8, 4))
-        btn_frame.grid(row=3, column=0, sticky="ew")
+        btn_frame.grid(row=4, column=0, sticky="ew")
 
         self._btn_run = ttk.Button(btn_frame, text="Run Evaluation",
                                    command=self._start, width=18)
@@ -205,7 +251,7 @@ class EvaluateTab(ttk.Frame):
 
         # ── Results + Log ─────────────────────────────────────────────────────
         results_frame = ttk.LabelFrame(self, text="Results", padding=8)
-        results_frame.grid(row=4, column=0, sticky="nsew", padx=8, pady=4)
+        results_frame.grid(row=5, column=0, sticky="nsew", padx=8, pady=4)
         results_frame.columnconfigure(0, weight=1)
 
         # Treeview for metric table
@@ -310,6 +356,12 @@ class EvaluateTab(ttk.Frame):
         self._prompt_text.delete("1.0", "end")
         self._prompt_text.insert("1.0", self._DEFAULT_PROMPT)
 
+    def _save_tool_paths(self) -> None:
+        cfg["last_eval_subset"] = self._subset_var.get().strip()
+        cfg["last_eval_audit_csv"] = self._audit_var.get().strip()
+        cfg["last_eval_gold_subset"] = self._gold_var.get().strip()
+        cfg.save()
+
     # ── Model fetcher ─────────────────────────────────────────────────────────
 
     _EMBED_PATTERNS = ("embed", "minilm", "e5-", "bge-", "gte-", "nomic")
@@ -387,6 +439,208 @@ class EvaluateTab(ttk.Frame):
         p = filedialog.askdirectory(title="Select output folder for CSVs")
         if p:
             self._out_var.set(p)
+
+    def _default_subset_path(self, suffix: str) -> Path:
+        dataset = Path(self._dataset_var.get().strip()) if self._dataset_var.get().strip() else None
+        base_dir = Path(self._out_var.get().strip() or "results")
+        stem = dataset.stem if dataset and dataset.name else "dataset"
+        return base_dir / f"{stem}_{suffix}.jsonl"
+
+    def _default_audit_path(self) -> Path:
+        subset = Path(self._subset_var.get().strip()) if self._subset_var.get().strip() else self._default_subset_path("fixed100")
+        base_dir = Path(self._out_var.get().strip() or "results")
+        return base_dir / f"{subset.stem}_audit.csv"
+
+    def _run_tool_thread(self, title: str, fn) -> None:
+        self._set_running(True)
+        self._status_lbl.configure(text=title, foreground="blue")
+        self._log_append(f"\n[{title}]\n")
+
+        def _worker():
+            try:
+                message = fn()
+                self._q.put(("tool_done", title, message))
+            except Exception:
+                self._q.put(("error", traceback.format_exc()))
+
+        self._thread = threading.Thread(target=_worker, daemon=True)
+        self._thread.start()
+
+    def _create_fixed_subset(self) -> None:
+        dataset = self._dataset_var.get().strip()
+        if not dataset:
+            self._log_append("[error] Select a source dataset first.\n")
+            return
+        out = filedialog.asksaveasfilename(
+            title="Save fixed 100-question subset",
+            defaultextension=".jsonl",
+            initialdir=str(Path(self._out_var.get().strip() or "data")),
+            initialfile=self._default_subset_path("fixed100").name,
+            filetypes=[("JSONL", "*.jsonl"), ("All files", "*")],
+        )
+        if not out:
+            return
+        self._subset_var.set(out)
+        self._save_tool_paths()
+
+        def _job():
+            from make_eval_subset import build_subset
+            rows = build_subset(Path(dataset), Path(out), n=100, shuffle=True, seed=42)
+            return f"Created fixed subset: {out} ({len(rows)} rows, shuffled once with seed=42)\nUse this for all paper QA runs.\n"
+
+        self._run_tool_thread("Create Fixed 100", _job)
+
+    def _create_quick_subset(self) -> None:
+        source = self._subset_var.get().strip() or self._dataset_var.get().strip()
+        if not source:
+            self._log_append("[error] Select a dataset or create the fixed subset first.\n")
+            return
+        out = filedialog.asksaveasfilename(
+            title="Save quick 20-question subset",
+            defaultextension=".jsonl",
+            initialdir=str(Path(self._out_var.get().strip() or "data")),
+            initialfile=self._default_subset_path("quick20").name,
+            filetypes=[("JSONL", "*.jsonl"), ("All files", "*")],
+        )
+        if not out:
+            return
+
+        def _job():
+            from make_eval_subset import build_subset
+            rows = build_subset(Path(source), Path(out), n=20, shuffle=False)
+            return f"Created quick subset: {out} ({len(rows)} rows)\nUse this for fast smoke tests before long paper runs.\n"
+
+        self._run_tool_thread("Create Quick 20", _job)
+
+    def _build_manual_audit_csv(self) -> None:
+        subset = self._subset_var.get().strip() or self._dataset_var.get().strip()
+        struct = self._struct_var.get().strip()
+        if not subset:
+            self._log_append("[error] Create or select a fixed subset first.\n")
+            return
+        if not struct:
+            self._log_append("[error] Select the structured index first.\n")
+            return
+        out = filedialog.asksaveasfilename(
+            title="Save manual audit CSV",
+            defaultextension=".csv",
+            initialdir=str(Path(self._out_var.get().strip() or "results")),
+            initialfile=self._default_audit_path().name,
+            filetypes=[("CSV", "*.csv"), ("All files", "*")],
+        )
+        if not out:
+            return
+        self._audit_var.set(out)
+        self._save_tool_paths()
+
+        flat = self._flat_var.get().strip()
+        top_k = int(self._topk_var.get())
+
+        def _job():
+            from build_manual_audit import build_manual_audit
+            audit_path, instructions_path, n_questions = build_manual_audit(
+                Path(subset),
+                Path(struct),
+                Path(flat) if flat else None,
+                Path(out),
+                top_k=top_k,
+            )
+            return (
+                f"Built manual audit CSV: {audit_path}\n"
+                f"Instructions: {instructions_path}\n"
+                f"Questions: {n_questions}\n"
+                "Use this file for manual article-title review and gold-subset marking.\n"
+            )
+
+        self._run_tool_thread("Build Audit CSV", _job)
+
+    def _build_gold_subset_file(self) -> None:
+        audit = self._audit_var.get().strip()
+        if not audit:
+            self._log_append("[error] Select or build an audit CSV first.\n")
+            return
+        out = filedialog.asksaveasfilename(
+            title="Save gold subset JSONL",
+            defaultextension=".jsonl",
+            initialdir=str(Path(self._out_var.get().strip() or "data")),
+            initialfile=self._default_subset_path("gold").name,
+            filetypes=[("JSONL", "*.jsonl"), ("All files", "*")],
+        )
+        if not out:
+            return
+        self._gold_var.set(out)
+        self._save_tool_paths()
+
+        def _job():
+            from build_golden_subset import build_golden_subset
+            rows = build_golden_subset(Path(audit), Path(out))
+            return f"Built gold subset: {out} ({len(rows)} rows)\nUse this only for retrieval evaluation on manually confirmed answer-title cases.\n"
+
+        self._run_tool_thread("Build Gold Subset", _job)
+
+    def _choose_csv_viewer_file(self) -> None:
+        p = filedialog.askopenfilename(
+            title="Open CSV for viewing",
+            initialdir=str(Path(self._out_var.get().strip() or "results")),
+            filetypes=[("CSV", "*.csv"), ("All files", "*")],
+        )
+        if p:
+            self._open_csv_viewer(p)
+
+    def _open_csv_viewer(self, path_str: str) -> None:
+        path = Path(path_str) if path_str else None
+        if not path or not path.exists():
+            self._log_append("[error] CSV file not found.\n")
+            return
+        try:
+            with open(path, newline="", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                rows = list(reader)
+                fields = reader.fieldnames or []
+        except Exception:
+            self._log_append(f"[error] Failed to open CSV:\n{traceback.format_exc()}\n")
+            return
+
+        win = tk.Toplevel(self)
+        win.title(f"CSV Viewer — {path.name}")
+        win.geometry("1100x620")
+        win.minsize(800, 420)
+        win.columnconfigure(0, weight=1)
+        win.rowconfigure(1, weight=1)
+
+        hdr = ttk.Frame(win, padding=8)
+        hdr.grid(row=0, column=0, sticky="ew")
+        hdr.columnconfigure(0, weight=1)
+        ttk.Label(
+            hdr,
+            text=f"{path}   ({len(rows)} rows, {len(fields)} columns)",
+            foreground="gray",
+        ).grid(row=0, column=0, sticky="w")
+
+        frame = ttk.Frame(win, padding=(8, 0, 8, 8))
+        frame.grid(row=1, column=0, sticky="nsew")
+        frame.columnconfigure(0, weight=1)
+        frame.rowconfigure(0, weight=1)
+
+        tree = ttk.Treeview(frame, columns=fields, show="headings")
+        for field in fields:
+            width = 120
+            if field in ("question", "correct_text", "manual_notes"):
+                width = 260
+            elif field.endswith("_top5_titles") or field.endswith("_matches"):
+                width = 300
+            tree.heading(field, text=field)
+            tree.column(field, width=width, minwidth=80, stretch=True)
+
+        vsb = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
+        hsb = ttk.Scrollbar(frame, orient="horizontal", command=tree.xview)
+        tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        tree.grid(row=0, column=0, sticky="nsew")
+        vsb.grid(row=0, column=1, sticky="ns")
+        hsb.grid(row=1, column=0, sticky="ew")
+
+        for row in rows:
+            tree.insert("", "end", values=[row.get(field, "") for field in fields])
 
     # ── Validation helpers ────────────────────────────────────────────────────
 
@@ -984,6 +1238,11 @@ class EvaluateTab(ttk.Frame):
                     self._tree.insert("", "end", values=(
                         label, n, f"{acc:.3f}", tok_str, hlp_str, hrt_str, ""
                     ))
+                elif kind == "tool_done":
+                    _, title, message = msg
+                    self._log_append(message + ("\n" if not message.endswith("\n") else ""))
+                    self._set_running(False)
+                    self._status_lbl.configure(text=title, foreground="green")
                 elif kind == "done":
                     self._pb["value"] = 100
                     self._log_append("\n✓ Evaluation complete.\n")

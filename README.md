@@ -113,6 +113,8 @@ Compares: BM25 Only, Hybrid Flat, Hybrid Structured, Hybrid Structured + Lead Au
 
 Metrics: Hit@1, Hit@3, Hit@5, Hit@10, MRR@10.
 
+Per-question output now includes `item_index` so fixed subsets stay traceable.
+
 ### Run LLM inference evaluation (GUI)
 
 Open the **Evaluate** tab:
@@ -125,6 +127,64 @@ Open the **Evaluate** tab:
 6. Click **Run Evaluation**
 
 Results are saved to CSV. Use **Compare** to load two result files side by side.
+
+The GUI **Evaluate** tab also includes a **Subset And Review Workflow** section:
+
+- `Create Fixed 100` — one-time frozen subset for paper runs
+- `Create Quick 20` — short smoke-test subset
+- `Build Audit CSV` — manual review sheet for checking whether the correct answer maps to a real ZIM article title
+- `Build Gold Subset` — reviewed retrieval-only subset derived from the audit CSV
+- `View CSV` / `Open Any CSV…` — lightweight in-app CSV viewer for audit and results files
+
+### Fixed subsets and manual review
+
+For paper runs, freeze a fixed subset once and reuse it for every condition:
+
+```bash
+python make_eval_subset.py \
+  --dataset data/medqa_test.jsonl \
+  --n 100 --shuffle --seed 42 \
+  --out data/medqa_fixed100.jsonl
+```
+
+For fast smoke tests, create a smaller fixed subset:
+
+```bash
+python make_eval_subset.py \
+  --dataset data/medqa_fixed100.jsonl \
+  --n 20 \
+  --out data/medqa_quick20.jsonl
+```
+
+To build a manual retrieval-audit CSV for human review:
+
+```bash
+python build_manual_audit.py \
+  --dataset data/medqa_fixed100.jsonl \
+  --structured /path/to/wikipedia \
+  --flat /path/to/wikipedia_flat \
+  --top-k 10 \
+  --out results/medqa_fixed100_audit.csv
+```
+
+This writes:
+
+- `results/medqa_fixed100_audit.csv` — one row per QA item with answer text, options, candidate title matches, and retrieved top titles for each condition
+- `results/medqa_fixed100_audit.instructions.txt` — columns to mark manually
+
+After manual review, build the gold retrieval subset:
+
+```bash
+python build_golden_subset.py \
+  --review results/medqa_fixed100_audit.csv \
+  --out data/medqa_fixed100_gold.jsonl
+```
+
+Recommended paper workflow:
+
+1. Run end-to-end QA accuracy on the full fixed 100-question subset.
+2. Run retrieval evaluation on the manually reviewed gold subset only.
+3. Keep `No Retrieval` as the main baseline for LLM accuracy comparisons.
 
 ---
 

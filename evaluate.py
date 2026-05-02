@@ -37,7 +37,7 @@ from pathlib import Path
 def _load_medqa_jsonl(path: Path, n: int) -> list[dict]:
     rows = []
     with open(path, encoding="utf-8") as f:
-        for line in f:
+        for line_no, line in enumerate(f, start=1):
             line = line.strip()
             if not line:
                 continue
@@ -51,6 +51,7 @@ def _load_medqa_jsonl(path: Path, n: int) -> list[dict]:
                         key = k.strip().upper()
                         break
             rows.append({
+                "item_index":   int(obj.get("item_index", line_no)),
                 "question":     obj["question"],
                 "options":      opts,
                 "correct_key":  key,
@@ -66,7 +67,7 @@ def _load_medmcqa_jsonl(path: Path, n: int) -> list[dict]:
     opt_map  = {"A": "opa", "B": "opb", "C": "opc", "D": "opd"}
     rows = []
     with open(path, encoding="utf-8") as f:
-        for line in f:
+        for line_no, line in enumerate(f, start=1):
             line = line.strip()
             if not line:
                 continue
@@ -74,6 +75,7 @@ def _load_medmcqa_jsonl(path: Path, n: int) -> list[dict]:
             opts = {k: obj.get(v, "") for k, v in opt_map.items()}
             cop  = key_map.get(int(obj.get("cop", 0)), "A")
             rows.append({
+                "item_index":   int(obj.get("item_index", line_no)),
                 "question":     obj["question"],
                 "options":      opts,
                 "correct_key":  cop,
@@ -88,12 +90,13 @@ def _load_gui_csv(path: Path, n: int) -> list[dict]:
     rows = []
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        for row in reader:
+        for row_no, row in enumerate(reader, start=1):
             r = {k.lower(): v for k, v in row.items()}
             letter = r.get("correct", "A").strip().upper()
             opts   = {"A": r.get("option_a",""), "B": r.get("option_b",""),
                       "C": r.get("option_c",""), "D": r.get("option_d","")}
             rows.append({
+                "item_index":   int(r.get("item_index") or row_no),
                 "question":     r.get("question", ""),
                 "options":      opts,
                 "correct_key":  letter,
@@ -108,7 +111,7 @@ def _load_mmlu_pro_jsonl(path: Path, n: int) -> list[dict]:
     """MMLU-Pro: options is a list of strings, answer is a letter A-J."""
     rows = []
     with open(path, encoding="utf-8") as f:
-        for line in f:
+        for line_no, line in enumerate(f, start=1):
             line = line.strip()
             if not line:
                 continue
@@ -117,6 +120,7 @@ def _load_mmlu_pro_jsonl(path: Path, n: int) -> list[dict]:
             opts = {chr(65 + i): v for i, v in enumerate(opts_list)}
             key = obj.get("answer", "A").strip().upper()
             rows.append({
+                "item_index":   int(obj.get("item_index", line_no)),
                 "question":     obj["question"],
                 "options":      opts,
                 "correct_key":  key,
@@ -133,7 +137,7 @@ def _load_pubmedqa_jsonl(path: Path, n: int) -> list[dict]:
     _opts = {"A": "yes", "B": "no", "C": "maybe"}
     rows = []
     with open(path, encoding="utf-8") as f:
-        for line in f:
+        for line_no, line in enumerate(f, start=1):
             line = line.strip()
             if not line:
                 continue
@@ -141,6 +145,7 @@ def _load_pubmedqa_jsonl(path: Path, n: int) -> list[dict]:
             decision = obj.get("final_decision", "").lower().strip()
             key = _decision_map.get(decision, "A")
             rows.append({
+                "item_index":   int(obj.get("item_index", line_no)),
                 "question":     obj["question"],
                 "options":      _opts,
                 "correct_key":  key,
@@ -241,6 +246,7 @@ def evaluate_system(
         rank = _hit_in_chunks(q["correct_text"], hits)
         results.append({
             "idx":          i,
+            "item_index":   q.get("item_index", i + 1),
             "question":     q["question"],
             "correct_key":  q["correct_key"],
             "correct_text": q["correct_text"],
@@ -319,7 +325,7 @@ def export_csv(out_path: Path, systems: list[tuple[str, dict]],
 
     # Per-question sheet
     with open(out_path, "w", newline="", encoding="utf-8") as f:
-        fieldnames = ["num", "question", "correct_key", "correct_text"] + \
+        fieldnames = ["num", "item_index", "question", "correct_key", "correct_text"] + \
                      [f"{label}_rank" for label, _ in all_results] + \
                      [f"{label}_hit@10" for label, _ in all_results]
         w = csv.DictWriter(f, fieldnames=fieldnames)
@@ -328,6 +334,7 @@ def export_csv(out_path: Path, systems: list[tuple[str, dict]],
         for i in range(n):
             row: dict = {
                 "num":          i + 1,
+                "item_index":   all_results[0][1][i].get("item_index", i + 1),
                 "question":     all_results[0][1][i]["question"][:120],
                 "correct_key":  all_results[0][1][i]["correct_key"],
                 "correct_text": all_results[0][1][i]["correct_text"],

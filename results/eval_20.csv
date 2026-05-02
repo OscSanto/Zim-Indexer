@@ -1,0 +1,22 @@
+num,question,correct_key,correct_text,BM25 Only_rank,Hybrid Flat_rank,Hybrid Structured_rank,Hybrid Struct + Lead_rank,BM25 Only_hit@10,Hybrid Flat_hit@10,Hybrid Structured_hit@10,Hybrid Struct + Lead_hit@10
+1,A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending,B,Tell the attending that he cannot fail to disclose this mistake,,,,,0,0,0,0
+2,A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of r,D,Cross-linking of DNA,,,,,0,0,0,0
+3,"Two weeks after undergoing an emergency cardiac catherization with stenting for unstable angina pectoris, a 61-year-old ",B,Cholesterol embolization,,3,4,4,0,1,1,1
+4,"A 39-year-old woman is brought to the emergency department because of fevers, chills, and left lower quadrant pain. Her ",D,"Lactose-fermenting, gram-negative rods forming pink colonies on MacConkey agar",,,,,0,0,0,0
+5,"A 35-year-old man comes to the physician because of itchy, watery eyes for the past week. He has also been sneezing mult",B,Ketotifen eye drops,,,,,0,0,0,0
+6,A 39-year-old man presents to the emergency department because of progressively worsening chest pain and nausea that sta,D,Reassurance and continuous monitoring,,,,,0,0,0,0
+7,A 68-year-old male comes to the physician for evaluation of right flank pain. He has a history of diabetes and periphera,C,Common iliac artery aneurysm,,,,,0,0,0,0
+8,A 65-year-old man is brought to the emergency department 30 minutes after the onset of acute chest pain. He has hyperten,C,Clopidogrel,,,,,0,0,0,0
+9,A 37-year-old-woman presents to her primary care physician requesting a new form of birth control. She has been utilizin,B,Active or recurrent pelvic inflammatory disease (PID),,,,,0,0,0,0
+10,A 23-year-old woman comes to the physician because she is embarrassed about the appearance of her nails. She has no hist,A,Silvery plaques on extensor surfaces,,,,,0,0,0,0
+11,A 24-year-old G2P1 woman at 39 weeks’ gestation presents to the emergency department complaining of painful contractions,D,It is an HIV-1/HIV2 antibody differentiation immunoassay,,,,,0,0,0,0
+12,A 72-year-old man comes to the physician because of a 2-month history of fatigue and worsening abdominal pain. During th,D,Ruxolitinib,,,,,0,0,0,0
+13,A 20-year-old man comes to the physician because of worsening gait unsteadiness and bilateral hearing loss for 1 month. ,B,Meningioma,,,,,0,0,0,0
+14,A 47-year-old executive schedules an appointment his physician for a routine medical check-up. He currently has no compl,D,A reduction in diastolic filling time,,,,,0,0,0,0
+15,A microbiologist is studying the emergence of a virulent strain of the virus. After a detailed study of the virus and it,C,Rotavirus,,,,,0,0,0,0
+16,A 59-year-old overweight woman presents to the urgent care clinic with the complaint of severe abdominal pain for the pa,B,Gallbladder cancer,,,,,0,0,0,0
+17,A 7-year-old boy is brought to his pediatrician’s office for a follow-up visit. He was diagnosed with asthma when he was,D,IL-4,,,,,0,0,0,0
+18,A 3-month-old boy is brought the emergency department by his parents after an episode of cyanosis and muscle hypotonia t,D,Matching,,,,,0,0,0,0
+19,A 29-year-old man presents to the emergency department due to central chest pain over the past 3 days which is constant ,B,Ibuprofen + colchicine +/- omeprazole,,,,,0,0,0,0
+20,A 46-year-old man is brought to the emergency department for evaluation of altered mental status. He was found on the fl,D,"Benzodiazepine intoxication
+""",,,,,0,0,0,0

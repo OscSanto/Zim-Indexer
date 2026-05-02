@@ -89,6 +89,9 @@ DEFAULTS: dict = {
     "last_zim_dir":         str(Path.home()),
     "last_index_dir":       str(Path.home()),
     "last_browse_zim":      "",
+    "last_eval_subset":     "",
+    "last_eval_audit_csv":  "",
+    "last_eval_gold_subset": "",
 }
 
 
