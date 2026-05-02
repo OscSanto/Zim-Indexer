@@ -51,6 +51,23 @@ def _title_search_matches(con, answer_text: str) -> list[str]:
         return []
 
 
+def _token_overlap_matches(con, answer_text: str) -> list[str]:
+    """Fallback title suggestions using simple token overlap over article titles."""
+    tokens = [tok.lower() for tok in answer_text.replace("/", " ").replace("-", " ").split()
+              if len(tok.strip()) >= 3]
+    if not tokens:
+        return []
+    rows = con.execute("SELECT title FROM articles").fetchall()
+    scored: list[tuple[int, str]] = []
+    for (title,) in rows:
+        title_lower = title.lower()
+        score = sum(1 for tok in tokens if tok in title_lower)
+        if score > 0:
+            scored.append((score, title))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    return [title for _, title in scored[:5]]
+
+
 def _write_instructions(path: Path) -> None:
     path.write_text(
         "\n".join([
@@ -76,6 +93,7 @@ def _write_instructions(path: Path) -> None:
             "Recommended rule:",
             "- Include a row in the gold subset only if the correct answer clearly maps to a real ZIM article.",
             "- Mark a retrieval hit only if the retrieved title is that article or an unambiguous equivalent.",
+            "- Use answer_title_exact_matches first; if empty, inspect answer_title_search_matches and answer_title_token_matches as candidate hints.",
         ]),
         encoding="utf-8",
     )
@@ -117,7 +135,7 @@ def build_manual_audit(
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fields = [
         "num", "item_index", "question", "correct_key", "correct_text",
-        "answer_title_exact_matches", "answer_title_search_matches",
+        "answer_title_exact_matches", "answer_title_search_matches", "answer_title_token_matches",
         "manual_answer_article_exists", "manual_canonical_article_title",
         "manual_include_in_gold", "manual_bm25_hit", "manual_flat_hit",
         "manual_struct_hit", "manual_struct_lead_hit", "manual_struct_section_hit",
@@ -143,6 +161,7 @@ def build_manual_audit(
                 "correct_text": q.get("correct_text", ""),
                 "answer_title_exact_matches": " | ".join(_exact_title_matches(title_con, q.get("correct_text", ""))),
                 "answer_title_search_matches": " | ".join(_title_search_matches(title_con, q.get("correct_text", ""))),
+                "answer_title_token_matches": " | ".join(_token_overlap_matches(title_con, q.get("correct_text", ""))),
                 "manual_answer_article_exists": "",
                 "manual_canonical_article_title": "",
                 "manual_include_in_gold": "",

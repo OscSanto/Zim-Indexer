@@ -200,6 +200,17 @@ def _hit_in_chunks(correct_text: str, hits: list[dict]) -> int | None:
     return None
 
 
+def _hit_by_title(correct_title: str, hits: list[dict]) -> int | None:
+    """Return 1-based rank of the first hit whose article title exactly matches."""
+    target = (correct_title or "").strip().lower()
+    if not target:
+        return None
+    for rank, hit in enumerate(hits, 1):
+        if (hit.get("title") or "").strip().lower() == target:
+            return rank
+    return None
+
+
 def evaluate_system(
     index_dir: Path,
     questions: list[dict],
@@ -243,13 +254,16 @@ def evaluate_system(
             hits = []
             print(f"\n  [warn] q{i+1} error: {e}")
 
-        rank = _hit_in_chunks(q["correct_text"], hits)
+        rank = _hit_by_title(q.get("correct_title", ""), hits)
+        if rank is None:
+            rank = _hit_in_chunks(q["correct_text"], hits)
         results.append({
             "idx":          i,
             "item_index":   q.get("item_index", i + 1),
             "question":     q["question"],
             "correct_key":  q["correct_key"],
             "correct_text": q["correct_text"],
+            "correct_title": q.get("correct_title", ""),
             "rank":         rank,
             "hits":         hits,
         })
@@ -325,7 +339,7 @@ def export_csv(out_path: Path, systems: list[tuple[str, dict]],
 
     # Per-question sheet
     with open(out_path, "w", newline="", encoding="utf-8") as f:
-        fieldnames = ["num", "item_index", "question", "correct_key", "correct_text"] + \
+        fieldnames = ["num", "item_index", "question", "correct_key", "correct_text", "correct_title"] + \
                      [f"{label}_rank" for label, _ in all_results] + \
                      [f"{label}_hit@10" for label, _ in all_results]
         w = csv.DictWriter(f, fieldnames=fieldnames)
@@ -338,6 +352,7 @@ def export_csv(out_path: Path, systems: list[tuple[str, dict]],
                 "question":     all_results[0][1][i]["question"][:120],
                 "correct_key":  all_results[0][1][i]["correct_key"],
                 "correct_text": all_results[0][1][i]["correct_text"],
+                "correct_title": all_results[0][1][i].get("correct_title", ""),
             }
             for label, results in all_results:
                 rk = results[i]["rank"]

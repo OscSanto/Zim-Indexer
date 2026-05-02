@@ -61,6 +61,7 @@ def _load_medqa_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  key,
                 "correct_text": opts.get(key, ""),
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -85,6 +86,7 @@ def _load_medmcqa_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  cop,
                 "correct_text": opts.get(cop, ""),
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -105,6 +107,7 @@ def _load_gui_csv(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  letter,
                 "correct_text": opts.get(letter, ""),
+                "correct_title": r.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -129,6 +132,7 @@ def _load_mmlu_pro_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  key,
                 "correct_text": opts.get(key, ""),
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -154,6 +158,7 @@ def _load_pubmedqa_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      _opts,
                 "correct_key":  key,
                 "correct_text": _opts[key],
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -524,6 +529,7 @@ def run_system(
                 "options":       q["options"],
                 "correct_key":   q["correct_key"],
                 "correct_text":  q["correct_text"],
+                "correct_title": q.get("correct_title", ""),
                 "hits": [
                     {
                         "title":           h.get("title", ""),
@@ -547,6 +553,7 @@ def run_system(
             "question":      q["question"],
             "correct_key":   q["correct_key"],
             "correct_text":  q["correct_text"],
+            "correct_title": q.get("correct_title", ""),
             "predicted":     predicted or "",
             "correct":       correct,
             "raw_response":  (gen["response"] or "").strip()[:80],
@@ -680,7 +687,7 @@ def export_csv(
     if not all_results:
         return
     with open(out_path, "w", newline="", encoding="utf-8") as f:
-        fields = ["num", "item_index", "question", "correct_key", "correct_text"] + \
+        fields = ["num", "item_index", "question", "correct_key", "correct_text", "correct_title"] + \
                  [f"{lbl}_pred" for lbl, _ in all_results] + \
                  [f"{lbl}_ok"   for lbl, _ in all_results]
         w = csv.DictWriter(f, fieldnames=fields)
@@ -693,6 +700,7 @@ def export_csv(
                 "question":     all_results[0][1][i]["question"][:100],
                 "correct_key":  all_results[0][1][i]["correct_key"],
                 "correct_text": all_results[0][1][i].get("correct_text", "")[:80],
+                "correct_title": all_results[0][1][i].get("correct_title", "")[:120],
             }
             for lbl, res in all_results:
                 row[f"{lbl}_pred"] = res[i]["predicted"]

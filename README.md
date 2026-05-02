@@ -133,7 +133,7 @@ The GUI **Evaluate** tab also includes a **Subset And Review Workflow** section:
 - `Create Fixed 100` — one-time frozen subset for paper runs
 - `Create Quick 20` — short smoke-test subset
 - `Build Audit CSV` — manual review sheet for checking whether the correct answer maps to a real ZIM article title
-- `Build Gold Subset` — reviewed retrieval-only subset derived from the audit CSV
+- `Build Gold Subset` — reviewed retrieval-only subset derived from the audit CSV; retrieval scoring uses the reviewed canonical title when present
 - `View CSV` / `Open Any CSV…` — lightweight in-app CSV viewer for audit and results files
 
 ### Fixed subsets and manual review
@@ -169,7 +169,7 @@ python build_manual_audit.py \
 
 This writes:
 
-- `results/medqa_fixed100_audit.csv` — one row per QA item with answer text, options, candidate title matches, and retrieved top titles for each condition
+- `results/medqa_fixed100_audit.csv` — one row per QA item with answer text, options, exact/title-search/token-overlap candidate title hints, and retrieved top titles for each condition
 - `results/medqa_fixed100_audit.instructions.txt` — columns to mark manually
 
 After manual review, build the gold retrieval subset:

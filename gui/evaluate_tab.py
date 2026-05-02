@@ -504,6 +504,8 @@ class EvaluateTab(ttk.Frame):
         )
         if not out:
             return
+        self._subset_var.set(out)
+        self._save_tool_paths()
 
         def _job():
             from make_eval_subset import build_subset
@@ -653,12 +655,6 @@ class EvaluateTab(ttk.Frame):
         if not Path(dataset).exists():
             self._log_append(f"[error] Dataset not found: {dataset}\n")
             return False
-        if not struct:
-            self._log_append("[error] No structured index directory selected.\n")
-            return False
-        if not Path(struct).exists():
-            self._log_append(f"[error] Structured index not found: {struct}\n")
-            return False
         try:
             int(self._topk_var.get())
         except ValueError:
@@ -673,6 +669,12 @@ class EvaluateTab(ttk.Frame):
             except ValueError:
                 self._log_append("[error] Port must be an integer.\n")
                 return False
+        elif not struct:
+            self._log_append("[error] No structured index directory selected.\n")
+            return False
+        elif not Path(struct).exists():
+            self._log_append(f"[error] Structured index not found: {struct}\n")
+            return False
         return True
 
     # ── Run evaluation ────────────────────────────────────────────────────────
