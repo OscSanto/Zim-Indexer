@@ -1,0 +1,4 @@
+label,acc,n_correct,n_total,avg_ctx_tokens,avg_prefill_s,std_prefill_s,p50_prefill_s,p95_prefill_s,avg_gen_s,std_gen_s,avg_total_s,std_total_s,p50_total_s,p95_total_s,avg_ttft_s,std_ttft_s,ram_mb,db_mb,idx_mb,avg_temp_c,peak_temp_c,avg_cpu_pct,avg_freq_mhz,min_freq_mhz,ctx_budget
+mistral-7b / No Retrieval / unlimited,0.0000,0,100,0,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0
+mistral-7b / No Retrieval / 256tok,0.0000,0,100,0,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,256
+mistral-7b / No Retrieval / 512tok,0.0000,0,100,0,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,512

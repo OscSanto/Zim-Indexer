@@ -56,6 +56,7 @@ def _load_medqa_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  key,
                 "correct_text": opts.get(key, ""),
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -80,6 +81,7 @@ def _load_medmcqa_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  cop,
                 "correct_text": opts.get(cop, ""),
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -101,6 +103,7 @@ def _load_gui_csv(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  letter,
                 "correct_text": opts.get(letter, ""),
+                "correct_title": r.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -125,6 +128,7 @@ def _load_mmlu_pro_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      opts,
                 "correct_key":  key,
                 "correct_text": opts.get(key, ""),
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break
@@ -150,6 +154,7 @@ def _load_pubmedqa_jsonl(path: Path, n: int) -> list[dict]:
                 "options":      _opts,
                 "correct_key":  key,
                 "correct_text": _opts[key],
+                "correct_title": obj.get("correct_title", ""),
             })
             if len(rows) >= n:
                 break

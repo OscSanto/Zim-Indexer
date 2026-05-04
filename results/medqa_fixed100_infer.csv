@@ -1,0 +1,102 @@
+num,item_index,question,correct_key,correct_text,correct_title,mistral-7b / No Retrieval / unlimited_pred,mistral-7b / No Retrieval / 256tok_pred,mistral-7b / No Retrieval / 512tok_pred,mistral-7b / No Retrieval / unlimited_ok,mistral-7b / No Retrieval / 256tok_ok,mistral-7b / No Retrieval / 512tok_ok
+1,991,"A 3-week-old newborn is brought to the physician by his parents because of poor feeding, irritabilit",D,Rectal suction biopsy,,,,,0,0,0
+2,203,A 48-year-old female presents for a follow-up appointment to discuss her ultrasound results. She pre,C,Inferior thyroid arteries,,,,,0,0,0
+3,1259,A 24-year-old woman comes to the emergency department with her boyfriend 2 hours after an episode of,A,Vasovagal syncope,,,,,0,0,0
+4,278,A 60-year-old man with a history of osteoarthritis has been awaiting hip replacement surgery for 3 y,D,Toxic tubulointerstitial nephritis,,,,,0,0,0
+5,428,A 45-year-old African-American male presents to the family medicine physician to assess the status o,B,Glycosidic bonds,,,,,0,0,0
+6,16,A 59-year-old overweight woman presents to the urgent care clinic with the complaint of severe abdom,B,Gallbladder cancer,,,,,0,0,0
+7,1203,A 40-year old man presents to the clinic with vague upper abdominal pain that has been worsening for,A,Pancreas,,,,,0,0,0
+8,1028,A 35-year-old man comes to the emergency department with acute shortness of breath that developed af,B,"1,500 units",,,,,0,0,0
+9,828,A 28-year-old woman presents to her primary care physician for evaluation of amenorrhea. Her last pe,A,Inhibition of gonadotropin-releasing hormone release,,,,,0,0,0
+10,504,"While in the ICU, a 62-year-old male undergoes placement of a Swan-Ganz catheter to evaluate his rig",B,25/5 mmHg,,,,,0,0,0
+11,326,A 31-year-old woman comes to the physician because of a 5-month history of intermittent flank pain. ,B,Autosomal dominant polycystic kidney disease,,,,,0,0,0
+12,682,A 29-year-old female presents to her primary care provider with an aching pain in her left leg that ,B,Antibodies directed against phospholipids,,,,,0,0,0
+13,933,A 64-year-old male presents to his primary care physician with a complaint of bilateral knee pain th,D,No further work-up needed,,,,,0,0,0
+14,388,A 6-year-old boy is brought in by his parents to a pediatrician’s office for persistent fever. His t,B,Pseudomonas,,,,,0,0,0
+15,236,A 32-year-old man comes to the physician for a pre-employment examination. He recently traveled to G,A,Active hepatitis A infection,,,,,0,0,0
+16,67,A 4-year-old boy is brought to the emergency department because of severe abdominal pain and bilious,C,Perform emergency laparotomy,,,,,0,0,0
+17,348,A 66-year-old woman presents to her primary care provider with several days of left flank pain radia,A,Primary hyperparathyroidism,,,,,0,0,0
+18,443,A 24-year-old man is brought to the emergency room by the police after a fall. The patient smells of,C,Projection,,,,,0,0,0
+19,1122,A 25-year-old woman comes to the physician because of periodic painful double vision for 3 days. Her,A,Demyelination of the medial longitudinal fasciculus,,,,,0,0,0
+20,377,A 3-month-old girl is brought to the physician because of a productive cough for 5 days. Over the pa,D,Polymerase chain reaction for viral genes,,,,,0,0,0
+21,36,A 67-year-old man who was diagnosed with arthritis 16 years ago presents with right knee swelling an,A,Psoriatic arthritis,,,,,0,0,0
+22,333,"A 55-year-old man presents to the emergency department with complaints of nausea, vomiting, palpitat",D,Inhibition of P-glycoprotein,,,,,0,0,0
+23,401,A 23-year-old woman comes to the physician because of progressive fatigue and painful swelling of he,B,Rough endoplasmic reticulum,,,,,0,0,0
+24,1146,A 33-year-old woman at 17-weeks gestation comes to the physician for evaluation of a painless mass i,A,Fibroadenoma,,,,,0,0,0
+25,976,A 28-year-old man reports to his physician that he is having second thoughts about his long-term com,C,Projection,,,,,0,0,0
+26,951,An investigator is studying cellular regeneration of epithelial cells. She has obtained a tissue sam,A,Ovaries,,,,,0,0,0
+27,826,A 16-year-old female presents to her physician’s office after noticing a round lump in her left brea,C,This mass will most likely decrease in size or disappear over time,,,,,0,0,0
+28,1031,"A 3466-g (7-lb, 10-oz) female newborn is delivered at 38 weeks' gestation to a 32-year-old woman, gr",A,Low levels of parathyroid hormone in serum,,,,,0,0,0
+29,846,An investigator is studying traumatic knee joint injuries in college athletes. Images and tissue sam,A,Perichondrium,,,,,0,0,0
+30,803,Three patients present to the pediatrician for routine well-child visits. The first child’s mother r,D,"Ages 2 months, 6 months, and 12 months",,,,,0,0,0
+31,651,A 51-year-old man presents the emergency room with chest pain. He mentions that the pain started sev,C,Gastritis,,,,,0,0,0
+32,541,A 21-year-old man is brought to the emergency department by his mother after being found lying uncon,D,Clomipramine,,,,,0,0,0
+33,797,While traveling abroad a physician is asked to attend a meeting regarding healthcare in the region. ,C,“I can not help you due to the ethical principle of nonmaleficence.”,,,,,0,0,0
+34,716,A mother brings her 6-year-old daughter to the pediatrician to discuss her child's sleeping troubles,B,They occur only during non-REM sleep,,,,,0,0,0
+35,3,Two weeks after undergoing an emergency cardiac catherization with stenting for unstable angina pect,B,Cholesterol embolization,,,,,0,0,0
+36,396,A six-year-old boy with a history of asthma currently uses an albuterol inhaler as needed to manage ,B,Add fluticasone daily,,,,,0,0,0
+37,465,A 22-year-old woman presents to the emergency department for abdominal pain. The patient has been tr,B,Borderline personality disorder,,,,,0,0,0
+38,332,"A 6-year-old African American boy is referred to the hospital by his family physician for jaundice, ",B,Sickle cell disease,,,,,0,0,0
+39,960,A 65-year-old male presents to his primary care physician for stiffness in his arm. He states that h,B,Adhesive capsulitis,,,,,0,0,0
+40,762,"A 39-year-old woman comes to the physician because of fever, generalized fatigue, and chills for 1 w",D,"Perform percutaneous drainage
+""",,,,,0,0,0
+41,455,A 42-year-old man presents to a neurologist for evaluation of severe headache. He started experienci,E,,,,,,0,0,0
+42,108,A 29-year-old man comes in for evaluation of infertility. He has been trying to conceive for over 2 ,A,Primary spermatocyte,,,,,0,0,0
+43,921,A 61-year-old woman presents to an outpatient clinic with fatigue and mild neck pain for a month. Sh,A,Plummer-Vinson syndrome,,,,,0,0,0
+44,529,A 56-year-old woman presents to a physician with severe pain and swelling of the left inguinal area ,C,Streptomycin,,,,,0,0,0
+45,1167,A 15-year-old girl is brought to the physician by her mother because of worsening grades over the pa,C,Fluoxetine,,,,,0,0,0
+46,188,"A 65-year-old man with metastatic lung cancer has been experiencing severe, unremitting pain. He has",B,Ketamine,,,,,0,0,0
+47,824,A 40-year-old woman presents to the emergency department with severe left upper quadrant pain (durat,X,,,,,,0,0,0
+48,998,A 47-year-old woman is brought to the emergency department by paramedics. She was found unconscious ,D,Opioid overdose,,,,,0,0,0
+49,372,A 55-year-old man presents with a 2-month history of an increasing sensation of fullness in the uppe,A,Cladribine,,,,,0,0,0
+50,1143,A 25-year-old female is brought to the emergency department by her family. They found her somnolent ,A,N-acetylcysteine,,,,,0,0,0
+51,587,A 34-year-old man comes to the physician because of frequent headaches and blurry vision during the ,B,Lactotrophs,,,,,0,0,0
+52,196,A group of researchers conducted a study to determine whether there is an association between folic ,C,Recall bias,,,,,0,0,0
+53,1156,An investigator is studying the growth pattern of a particular bacterial strain that caused a respir,D,Corynebacterium diphtheriae,,,,,0,0,0
+54,537,A 63-year-old man with diverticular disease comes to the emergency department because of painless re,D,Centrilobular hepatocytes,,,,,0,0,0
+55,511,A 46-year-old woman with a history of previously well-controlled HIV infection comes to the physicia,A,"""""""Let's talk about what makes it difficult for you to take your medications.""""""",,,,,0,0,0
+56,977,"A 25-year-old, G2P2L2 woman presents with a complaint of missed menstrual cycle for 4 weeks. Her pre",D,Oral mifepristone + misoprostol,,,,,0,0,0
+57,1051,"A 40-year-old female with a past medical history of high cholesterol, high blood pressure, hyperthyr",C,Timing of the dosing of colesevelam should be separated from this patient’s othe,,,,,0,0,0
+58,743,A 23-year-old woman visits her obstetrician for an antenatal appointment. She is at the 24th week of,B,Transient hypertrophic cardiomyopathy,,,,,0,0,0
+59,1264,A 62-year-old man is brought to the physician by his wife because of difficulties walking for the pa,A,Ventricular shunting,,,,,0,0,0
+60,632,A 50-year-old man presents to the office with complaints of fever and chills for 4 weeks. He adds th,B,Babesiosis,,,,,0,0,0
+61,1158,A 4-year-old boy with acute lymphoblastic leukemia is admitted to the hospital to undergo allogeneic,D,Granulocyte-macrophage colony-stimulating factor,,,,,0,0,0
+62,474,"A 5-year-old male is brought to the pediatrician with complaints of a painful mouth/gums, and vesicu",C,HSV-1,,,,,0,0,0
+63,813,A 45-year-old African-American woman comes to the physician after an episode of hemoptysis. Over the,D,Adenocarcinoma of the lung,,,,,0,0,0
+64,300,A 72-year-old woman is admitted to the hospital for treatment of unstable angina. Cardiac catheteriz,B,16,,,,,0,0,0
+65,718,"Two hours after admission to the hospital for dialysis, a 63-year-old woman has severe pain in her l",B,Secondary hyperparathyroidism,,,,,0,0,0
+66,851,A 55-year-old construction worker is struck by a high-voltage power line while on duty. According to,B,Urinalysis,,,,,0,0,0
+67,50,A 67-year-old man is hospitalized after several days of fever and increasing shortness of breath. Re,C,Proliferation of surfactant-secreting cells,,,,,0,0,0
+68,794,A 5-year-old girl is brought to her pediatrician for evaluation of difficulties noted at school. Her,B,GI upset,,,,,0,0,0
+69,101,A 2-day-old male newborn is brought to the physician because of yellowing of the skin and sclerae fo,D,Anti-B antibodies,,,,,0,0,0
+70,663,A 58-year-old man comes to the emergency department because of increasing shortness of breath and a ,D,Blunting of costophrenic angle,,,,,0,0,0
+71,666,A 31-year-old man comes to the physician because of a 4-week history of a painless lump near the lef,B,Flexor pollicis longus tendon,,,,,0,0,0
+72,1255,A 60-year-old woman presents to the outpatient clinic complaining of severe vulvar itching that has ,B,Lichen sclerosus,,,,,0,0,0
+73,1151,A 30-year-old woman presents to an outpatient clinic for a scheduled gynecologic check-up. The patie,A,No further intervention,,,,,0,0,0
+74,45,A 45-year-old G5P4105 presents to her gynecologist’s office with six months of increasingly heavy pe,A,Globular 10-week sized uterus,,,,,0,0,0
+75,290,A previously healthy 2-year-old boy is brought to the physician because of a 10-day history of unste,C,Small blue cells arranged in rosettes around a central neuropil,,,,,0,0,0
+76,1202,A 24-year-old woman comes to the physician because of persistent fatigue for the past 4 months. She ,C,Iron deficiency,,,,,0,0,0
+77,862,A 3-year-old boy is brought to the physician because of a 3-day history of fatigue and yellow discol,B,Cholecystitis,,,,,0,0,0
+78,899,A 38-year-old woman presents to the office for a routine examination. She has no complaints and offe,B,Avoidant personality disorder,,,,,0,0,0
+79,329,"A 27-year-old woman, gravida 2, para 1, at 40 weeks' gestation is admitted to the hospital in active",A,Sympathetic block,,,,,0,0,0
+80,1072,A 10-year-old boy is brought to the emergency department because he has not been able to walk since ,A,Intravenous immunoglobulin (IVIG),,,,,0,0,0
+81,1033,An 80-year-old man presents with severe pain of the right lower extremity. He says that symptoms had,B,Immediate debridement and empiric IV antibiotics,,,,,0,0,0
+82,893,A 55-year-old man presents with complaints of exertional dyspnea and dry cough. He reports using ext,D,Increased renal tubular sodium reabsorption,,,,,0,0,0
+83,624,A group of investigators is studying the association between a fire retardant chemical used on furni,A,Case-control study,,,,,0,0,0
+84,1174,A 53-year-old male presents to his primary care physician complaining of fatigue and joint and muscl,A,Sofosbuvir and simeprevir,,,,,0,0,0
+85,247,A 43-year-old man with a history of hepatitis C and current intravenous drug use presents with 5 day,A,Repeat blood cultures now,,,,,0,0,0
+86,273,A 9-month-old boy is brought to the physician by his mother because of intermittent watery diarrhea ,C,Autoimmune endocrinopathy,,,,,0,0,0
+87,582,A 58-year-old woman presents to the emergency department with difficulty breathing and a sensation t,C,Age,,,,,0,0,0
+88,490,A 62-year-old man with a history of chronic bronchitis comes to the physician because of a 1-month h,C,Tiotropium,,,,,0,0,0
+89,1186,"A previously healthy, 24-year-old man comes to the physician because of a 6-week history of loose, n",C,Formation of noncaseating granulomas,,,,,0,0,0
+90,1139,"A 62-year-old woman with small-cell lung cancer comes to the physician because of a painful, burning",D,Cell injury due to drug metabolites,,,,,0,0,0
+91,215,A 35-year-old female is brought to the emergency department after being found unconscious. The patie,B,Factitious disorder,,,,,0,0,0
+92,849,"A 47-year-old woman comes to the emergency department because of worsening pain, discoloration, and ",B,Brown recluse spider,,,,,0,0,0
+93,456,A 62-year-old woman presents to the emergency department for vision changes. About 90 minutes ago sh,C,Posterior cerebral artery,,,,,0,0,0
+94,836,"A 45-year-old woman with hypothyroidism comes to the physician because of progressive fatigue, letha",C,Parietal cell destruction,,,,,0,0,0
+95,79,A newborn is found to be extremely cyanotic immediately after birth. He then develops progressive re,C,Transposition of great vessels,,,,,0,0,0
+96,861,"A 24-year-old woman delivers a baby at term. The Apgar counts are 9 and 10 at 1 and 5 minutes, respe",C,Pituitary infarction,,,,,0,0,0
+97,23,A 30-year-old African American woman comes to the physician for the evaluation of a dry cough and ch,C,Histoplasma capsulatum infection,,,,,0,0,0
+98,604,"A 38-year-old woman comes to the physician because of a 1-month history of a painless, nonpruritic s",A,Dermatofibroma,,,,,0,0,0
+99,357,A 29-year-old man is referred by his marriage counselor to the outpatient psychiatry clinic. The pat,A,Schizotypal personality disorder,,,,,0,0,0
+100,1237,"A 45-year-old woman presents to the physician with a history of headache, palpitations, and episodic",B,Multiple endocrine neoplasia (MEN) 2A,,,,,0,0,0
